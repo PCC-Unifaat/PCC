@@ -1,0 +1,11 @@
+{
+    "name": "pcc/application",
+    "autoload": {
+        "psr-4": {
+            "Classes\\": "Classes/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
