@@ -6,10 +6,9 @@
 				\Classes\Models\PainelModel::logout();
 			
 
-			if(isset($_SESSION['login']))
-				\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'pacientes');
-			else
-				\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'login');
+			
+			
+			\Classes\Models\PainelModel::checkLogin('painel');
 			
 			
 			

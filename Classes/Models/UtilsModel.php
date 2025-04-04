@@ -28,27 +28,28 @@
             $sql->execute($array);
 		}
 
-		public static function selecionar($tabela,$campo,$valor){
-			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo`= 'true' AND $campo = ?");
+		public static function selecionar($tabela,$campo = '1',$valor = '1'){
+			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo`= '1' AND $campo = ?");
 			$sql->execute(array($valor));
 			return $sql->fetch();
 		}
 
-		public static function selecionarTudo($tabela,$campo,$valor,$coluna = 'id',$ordem = 'ASC'){
-			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo` = 'true' AND $campo = ? ORDER BY $coluna $ordem");
+		public static function selecionarTudo($tabela,$campo = '1',$valor = '1',$coluna = 'id',$ordem = 'ASC'){
+			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo` = '1' AND $campo = ? ORDER BY $coluna $ordem");
 			$sql->execute(array($valor));
 			return $sql->fetchAll();
 		}
 
-		public static function busca($tabela,$campo,$valor,$coluna,$busca,$ordem = 'id'){
-			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo`= 'true' AND $campo = ? AND $coluna LIKE ? ORDER BY $ordem ");
-			$sql->execute(array($valor,'%'.$busca.'%'));
+		public static function busca($tabela,$coluna = '1',$busca = '1',$ordem = 'id'){
+			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo`= '1' AND $coluna LIKE ? ORDER BY $ordem ");
+			echo $sql->queryString;
+			$sql->execute(array('%'.$busca.'%'));
 			return $sql->fetchAll();
 		}
 
 		
 		public static function deletar($tabela,$id){
-			$sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET `ativo` = 'false' WHERE id = ?");
+			$sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET `ativo` = '0' WHERE id = ?");
 			$sql->execute(array($id));
 		}
     }

@@ -14,7 +14,7 @@
 	// define('EMAIL_VERIFICACAO', 'recuperacao@paginasdotempo.com.br');
 
 	define('HOST', 'localhost');
-	define('DATABASE', 'projeto_final');
+	define('DATABASE', 'projeto_conclusao');
 	define('USUARIO', 'root');
 	define('SENHA', '');
 

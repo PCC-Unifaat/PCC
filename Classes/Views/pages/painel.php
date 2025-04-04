@@ -15,9 +15,7 @@
         </div>
           <h1>Bem vindo, <?php echo explode(' ',$_SESSION['nome'])[0]?>!</h1>
 
-          <p><b>Agente:</b> <?php echo $_SESSION['nome']?></p>
-          <p><b>Unidade de Saúde:</b> <?php echo $_SESSION['unidade']['nome']?></p>
-          <p><b>Cnes:</b> <?php echo $_SESSION['unidade']['cnes']?></p>
+    
       </div>
     </div>
 

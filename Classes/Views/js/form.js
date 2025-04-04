@@ -1,56 +1,53 @@
 $(document).ready(function(){
     validarInput();
+    $('#cpf').mask('999.999.999-99');
+    $('#prontuario').mask('999.99.999');
+    $('#telefone').mask('(99) 99999-9999');
 
-    $('#familia').mask('999.99.999');
-
-    $('#area_micro').mask('999.99');
-
-    $('#cep').mask('99999-999');
-
-    $('#buscar-cep').click(function(){
-        var cep = $(this).parent().parent().find('#cep').val();
-        cep = cep.replace(/-/,'')
+    // $('#buscar-cep').click(function(){
+    //     var cep = $(this).parent().parent().find('#cep').val();
+    //     cep = cep.replace(/-/,'')
         
-        buscarCep(cep);
+    //     buscarCep(cep);
 
-    })
+    // })
 
-    $('form input[type="file"]').change(function(){
-        var el = $(this);
-        var fileName = el[0].files[0]['name'];
-        var span = el.parent().find('span');
+    // $('form input[type="file"]').change(function(){
+    //     var el = $(this);
+    //     var fileName = el[0].files[0]['name'];
+    //     var span = el.parent().find('span');
     
-        console.log(el[0].files[0])
-        if(fileName)
-          span.html(fileName);
-    })
+    //     console.log(el[0].files[0])
+    //     if(fileName)
+    //       span.html(fileName);
+    // })
 })
 
-function buscarCep(cep){
-    var loading = $("#loading");
+// function buscarCep(cep){
+//     var loading = $("#loading");
 
-    loading.show();
-    $.ajax({
-        url: `https://viacep.com.br/ws/${cep}/json/`,
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
+//     loading.show();
+//     $.ajax({
+//         url: `https://viacep.com.br/ws/${cep}/json/`,
+//         type: "GET",
+//         dataType: "json",
+//         success: function (data) {
 
-            if(data.erro !== undefined){
-                alertMessage("CEP inválido ou não encontrado",'erro');
-            }else{
-               $('#rua').val(data['logradouro'])
-               $('#bairro').val(data['bairro'])
-            }
-        },
-        error: function(data){
-            alertMessage("Não foi possível buscar este CEP.",'erro');
-        },
-        complete: function(){
-            loading.hide();
-        }
-    });
-}
+//             if(data.erro !== undefined){
+//                 alertMessage("CEP inválido ou não encontrado",'erro');
+//             }else{
+//                $('#rua').val(data['logradouro'])
+//                $('#bairro').val(data['bairro'])
+//             }
+//         },
+//         error: function(data){
+//             alertMessage("Não foi possível buscar este CEP.",'erro');
+//         },
+//         complete: function(){
+//             loading.hide();
+//         }
+//     });
+// }
 
 
 function validarInput(){  

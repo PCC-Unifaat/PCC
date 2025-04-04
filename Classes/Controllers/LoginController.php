@@ -3,7 +3,7 @@
 	class LoginController{
 		function index(){
 			$tabela = 'agente';
-            \Classes\Models\UtilsModel::alerta('erro','Você não está logado!');
+           
 			if(isset($_POST['acao'])){
 				$email = $_POST['email'];
 				$senha = $_POST['senha'];
@@ -12,7 +12,7 @@
 					\Classes\Models\UtilsModel::alerta('erro','Preencha todos os campos!');
 				else{
 					$verificar = \Classes\Models\UtilsModel::selecionar($tabela, 'email', $email);
-
+	
 					if(!empty($verificar) && $senha == \Classes\Bcrypt::check($senha,$verificar['senha'])){
 						$_SESSION['login'] = true;
 						$_SESSION['id'] = $verificar['id'];
