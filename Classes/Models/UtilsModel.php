@@ -42,7 +42,6 @@
 
 		public static function busca($tabela,$coluna = '1',$busca = '1',$ordem = 'id'){
 			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo`= '1' AND $coluna LIKE ? ORDER BY $ordem ");
-			echo $sql->queryString;
 			$sql->execute(array('%'.$busca.'%'));
 			return $sql->fetchAll();
 		}

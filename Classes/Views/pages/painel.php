@@ -15,7 +15,13 @@
         </div>
           <h1>Bem vindo, <?php echo explode(' ',$_SESSION['nome'])[0]?>!</h1>
 
-    
+          <a href="<?php echo INCLUDE_PATH;?>puericultura">Puericultura</a>
+          <a href="<?php echo INCLUDE_PATH;?>criancas">Crianças</a>
+          <a href="<?php echo INCLUDE_PATH;?>idosos">Idosos</a>
+          <a href="<?php echo INCLUDE_PATH;?>hipertensos">Hipertensos</a>
+          <a href="<?php echo INCLUDE_PATH;?>diabetes">Diabetes</a>
+          <a href="<?php echo INCLUDE_PATH;?>ppn">Mulheres no período fértil</a>
+          <a href="<?php echo INCLUDE_PATH;?>gestantes">Gestantes</a>
       </div>
     </div>
 

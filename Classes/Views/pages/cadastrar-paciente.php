@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-single w30">
-                <label for="prontuario">Prontuário: </label>
+                <label for="prontuario">Prontuário*: </label>
                 <input type="text" id="prontuario" name="prontuario">
             </div>
 
