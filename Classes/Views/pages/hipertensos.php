@@ -1,5 +1,5 @@
 <?php
-  $title = 'Crianças 10 - 14 anos';
+  $title = 'Hipertensos';
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
@@ -12,9 +12,9 @@
     <div class="container">
       <div class="content">
         <div class="mapa-site">
-          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <span>Crianças 10 - 14 anos</span>
+          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <span>Hipertensos</span>
         </div>
-      <h1>Lista de crianças 10 - 14 anos!</h1>
+      <h1>Lista de pacientes hipertensos!</h1>
       <div class="head">
         <div class="busca w100">
           <?php
@@ -27,12 +27,10 @@
                 $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela);
             }
 
-            // Filter patients with less than 1 year of age
-            $crianca = array_filter($paciente, function($paciente) {
-                $dataNascimento = new DateTime($paciente['nascimento']);
-                $hoje = new DateTime();
-                $idade = $hoje->diff($dataNascimento)->y;
-                return $idade < 15 && $idade >= 10;
+            // Filter patients with comorbidade 1
+            $hipertensos = array_filter($paciente, function($paciente) {
+                $comorbidade = explode(',', $paciente['comorbidade']);
+                return in_array('1', $comorbidade);
             });
           ?>
           <form class="w100" method="post">
@@ -50,8 +48,8 @@
         </div>
       </div>
       <?php 
-        if (empty($crianca)) {
-            echo '<h3>Nenhum paciente entre 10 e 14  anos cadastrado</h3>';
+        if (empty($hipertensos)) {
+            echo '<h3>Nenhum paciente hipertenso cadastrado</h3>';
         }else{
       ?>
       <div class="overflow"> 
@@ -62,9 +60,9 @@
                   <th>Nome</th>
                   <th>Prontuário</th>
                   <th>Data de nascimento</th>
-                  <th>Idade</th>
-                  <th>Vacina dengue</th>
-                  <th>Vacina Febre Amarela</th>
+                  <th>Diabético</th>
+                  <th>Última consulta</th>
+                  <th>Próxima consulta</th>
                   <th>Observação</th>
                   <th>Editar</th>
                   
@@ -72,22 +70,18 @@
               </tr>
           <?php 
                 
-              foreach ($crianca as $key => $value) {
+              foreach ($hipertensos as $key => $value) {
+                $comorbidade = explode(',', $value['comorbidade']);
+                $diabete = (in_array('2', $comorbidade)) ? true : false;
+                
           ?>
                 <tr>
                   <td><?php echo ucfirst($value['nome']);?></td>
                   <td><?php echo $value['prontuario'];?></td>
                   <td><?php echo date('d/m/Y', strtotime($value['nascimento']));?></td>
-                  <td>
-                    <?php 
-                      $dataNascimento = new DateTime($value['nascimento']);
-                      $hoje = new DateTime();
-                      $idade = $hoje->diff($dataNascimento)->y;
-                      echo $idade;
-                    ?>
-                  </td>
-                  <td><?php echo (!empty($value['vacina_dengue']) ? '<span class="ativo"><i class="fa-solid fa-syringe"></i></span>' : '') ?></td>
-                  <td><?php echo (!empty($value['vacina_febre_amarela']) ? '<span class="ativo"><i class="fa-solid fa-syringe"></i></span>' : '') ?></td>
+                  <td><?php echo (!empty($diabete) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
+                  <td></td>
+                  <td></td>
                   <td></td>
                 <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 </tr>

@@ -6,3 +6,4 @@ Colocar legenda das vacinas
 adicionar a função de editar
 verificar se ja existe cpf cadastrado
 verificar pq nao ta cadastrando comorbidade
+exportar tabela em pdf (instalar tcpdf)

@@ -1,5 +1,5 @@
 <?php
-  $title = 'Idosos 65 anos ou mais';
+  $title = 'Mulheres no período fértil';
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
@@ -13,9 +13,9 @@
     <div class="container">
       <div class="content">
         <div class="mapa-site">
-          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <span>Idosos 65 anos ou mais</span>
+          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <span>Mulheres no período fértil</span>
         </div>
-      <h1>Lista de Idosos 65 anos ou mais!</h1>
+      <h1>Lista de Mulheres no período fértil!</h1>
       <div class="head">
         <div class="busca w100">
           <?php
@@ -25,15 +25,15 @@
                 $busca = $_POST['busca'];
                 $paciente = Classes\Models\UtilsModel::busca($tabela, 'nome', $busca, $ordem);
             } else {
-                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela);
+                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, 'sexo', 'feminino');
             }
 
             // Filter patients with less than 1 year of age
-            $idoso = array_filter($paciente, function($paciente) {
+            $mulheres = array_filter($paciente, function($paciente) {
                 $dataNascimento = new DateTime($paciente['nascimento']);
                 $hoje = new DateTime();
                 $idade = $hoje->diff($dataNascimento)->y;
-                return $idade >= 65;
+                return $idade > 24 && $idade <= 64;
             });
           ?>
           <form class="w100" method="post">
@@ -51,8 +51,8 @@
         </div>
       </div>
       <?php 
-        if (empty($idoso)) {
-            echo '<h3>Nenhum paciente idoso cadastrado!</h3>';
+        if (empty($mulheres)) {
+            echo '<h3>Nenhuma mulher no período fértil cadastrada!</h3>';
         }else{
       ?>
       <div class="overflow"> 
@@ -64,7 +64,8 @@
               <th>Prontuário</th>
               <th>Data de nascimento</th>
               <th>Idade</th>
-              <th>Comorbidades</th>
+              <th>Telefone</th>
+              <th>Último PPN</th>
               <th>Observação</th>
               <th>Editar</th>
               
@@ -72,7 +73,7 @@
           </tr>
       <?php 
             
-          foreach ($idoso as $key => $value) {
+          foreach ($mulheres as $key => $value) {
       ?>
             <tr>
               <td><?php echo ucfirst($value['nome']);?></td>
@@ -86,23 +87,8 @@
                   echo $idade;
                 ?>
               </td>
-              <td>
-                <?php 
-                    if (empty($value['comorbidade'])) {
-                      echo 'Nenhuma';
-                    } else {
-                     
-                      $comorbidade = explode(',', $value['comorbidade']);
-                      foreach ($comorbidade as $key => $comorbidadeId) {
-                        $comorbidades = \Classes\Models\UtilsModel::selecionar('comorbidade', 'id', $comorbidadeId)['comorbidade'];
-                        echo ucfirst($comorbidades);
-                        if ($key !== array_key_last($comorbidade)) {
-                          echo ', ';
-                        }
-                      }
-                    }
-                ?>
-              </td>
+              <td><?php echo $value['telefone'];?></td>
+              <td></td>
               <td></td>
             <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>

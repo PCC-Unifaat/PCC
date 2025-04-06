@@ -3,7 +3,7 @@
   $css = ['painel'];
   $js = ['mask','painel','form'];
   include("header.php");
-//   $agente = \Classes\Models\UtilsModel::selecionar('tb_admin.agente', 'id', $_SESSION['id']);
+  //   $agente = \Classes\Models\UtilsModel::selecionar('tb_admin.agente', 'id', $_SESSION['id']);
   
   $menuSelected = 'pacientes';
   
@@ -35,18 +35,27 @@
             </div>
 
             <div class="form-single w30">
-                <label for="nascimetno">Data de nascimento: </label>
+                <label for="nascimetno">Data de nascimento*: </label>
                 <input type="date" id="nascimetno" name="nascimetno" content="required">
             </div>
 
             <div class="form-single w30">
-                <label for="prontuario">Prontuário*: </label>
+                <label for="prontuario">Prontuário: </label>
                 <input type="text" id="prontuario" name="prontuario">
             </div>
 
             <div class="form-single w30">
                 <label for="telefone">Telefone: </label>
                 <input type="text" id="telefone" name="telefone">
+            </div>
+
+            <div class="form-single w70">
+              <label for="sexo">Sexo (biológico)*: </label>
+              <select id="sexo" name="sexo" content="required">
+                <option value="" disabled selected>Selecione</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+              </select>
             </div>
 
             <div class="form-single w100">
