@@ -30,7 +30,7 @@
             // Filter patients with comorbidade 1
             $hipertensos = array_filter($paciente, function($paciente) {
                 $comorbidade = explode(',', $paciente['comorbidade']);
-                return in_array('1', $comorbidade);
+                return in_array('2', $comorbidade);
             });
           ?>
           <form class="w100" method="post">
@@ -72,7 +72,7 @@
                 
               foreach ($hipertensos as $key => $value) {
                 $comorbidade = explode(',', $value['comorbidade']);
-                $diabete = (in_array('2', $comorbidade)) ? true : false;
+                $diabete = (in_array('1', $comorbidade)) ? true : false;
                 
           ?>
                 <tr>

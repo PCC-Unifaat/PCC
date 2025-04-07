@@ -261,6 +261,11 @@ table tr{
 
 table tr:nth-of-type(odd){ background: #dfdfdf;}
 
+table tr.linha-1{ background: #F1C232;}
+table tr.linha-2{ background: #4285F4;}
+table tr.linha-3{ background: #E06666;}
+table tr.linha-4{ background: #FF0000;}
+
 table td{  padding: 15px 10px;}
 
 table td span.ativo{ 

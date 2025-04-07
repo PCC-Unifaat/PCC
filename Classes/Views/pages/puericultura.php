@@ -14,7 +14,7 @@
         <div class="mapa-site">
           <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <span>Puericultura</span>
         </div>
-      <h1>Lista de puericultura!</h1>
+      <h1>Lista de puericultura! ( 0 a 2 anos)</h1>
       <div class="head">
         <div class="busca w100">
           <?php
@@ -32,7 +32,7 @@
                 $dataNascimento = new DateTime($paciente['nascimento']);
                 $hoje = new DateTime();
                 $idade = $hoje->diff($dataNascimento)->y;
-                return $idade < 1;
+                return $idade < 2;
             });
           ?>
           <form class="w100" method="post">
@@ -71,15 +71,27 @@
               </tr>
           <?php 
               foreach ($puericultura as $key => $value) {
+                  $consultas = \Classes\Models\UtilsModel::selecionar('consulta', 'paciente_id', $value['id']);
+                  if(!empty($consultas)){
+                      $ult_consulta = date('d/m/Y', strtotime($consultas['ult_consulta']));
+                      $prox_consulta = date('d/m/Y', strtotime($consultas['prox_consulta']));
+                  }else{
+                      $ult_consulta = '';
+                      $prox_consulta = '';
+                  }
+
+                  $legenda = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $value['id'])['legenda_id'];
+
+                  $obs = explode('||', $value['observacao'])[0];
           ?>
-                <tr>
+                <tr class="linha-<?php echo $legenda?>">
                   <td><?php echo ucfirst($value['nome']);?></td>
                   <td><?php echo $value['prontuario'];?></td>
                   <td><?php echo date('d/m/Y', strtotime($value['nascimento']));?></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                  <td><?php echo$ult_consulta;?></td>
+                  <td><?php echo$prox_consulta;?></td>
+                  <td><?php echo$obs;?></td>
+                <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar_puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 </tr>
               <?php }?>
           </table>

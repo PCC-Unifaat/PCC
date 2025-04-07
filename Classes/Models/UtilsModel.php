@@ -24,7 +24,7 @@
 				}
 			}
 
-			$sql = \Classes\MySql::conectar()->prepare("INSERT INTO `$tabela` VALUES(null,".$campos.")");
+			$sql = \Classes\MySql::conectar()->prepare("INSERT INTO `$tabela` VALUES(null,".$campos.",ativo = '1')");
             $sql->execute($array);
 		}
 

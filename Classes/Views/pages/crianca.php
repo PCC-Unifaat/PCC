@@ -86,7 +86,7 @@
                       echo $idade;
                     ?>
                   </td>
-                  <td><?php echo (!empty($value['vacina_dengue']) ? '<span class="ativo"><i class="fa-solid fa-syringe"></i></span>' : '') ?></td>
+                  <td><?php echo (!empty($value['vacina_dengue']) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
                   <td><?php echo (!empty($value['vacina_febre_amarela']) ? '<span class="ativo"><i class="fa-solid fa-syringe"></i></span>' : '') ?></td>
                   <td></td>
                 <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>

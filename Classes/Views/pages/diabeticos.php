@@ -30,7 +30,7 @@
             // Filter patients with comorbidade 1
             $diabeticos = array_filter($paciente, function($paciente) {
                 $comorbidade = explode(',', $paciente['comorbidade']);
-                return in_array('2', $comorbidade);
+                return in_array('1', $comorbidade);
             });
           ?>
           <form class="w100" method="post">
@@ -60,6 +60,7 @@
                   <th>Nome</th>
                   <th>Prontuário</th>
                   <th>Data de nascimento</th>
+                  <th>Insulina</th>
                   <th>Hipertenso</th>
                   <th>Última consulta</th>
                   <th>Próxima consulta</th>
@@ -72,13 +73,14 @@
                 
               foreach ($diabeticos as $key => $value) {
                 $comorbidade = explode(',', $value['comorbidade']);
-                $hipertenso = (in_array('1', $comorbidade)) ? true : false;
+                $hipertenso = (in_array('2', $comorbidade)) ? true : false;
                 
           ?>
                 <tr>
                   <td><?php echo ucfirst($value['nome']);?></td>
                   <td><?php echo $value['prontuario'];?></td>
                   <td><?php echo date('d/m/Y', strtotime($value['nascimento']));?></td>
+                  <td><?php echo (!empty($value['insulina']) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
                   <td><?php echo (!empty($hipertenso) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
                   <td></td>
                   <td></td>

@@ -13,7 +13,7 @@ $('.confirmar-acao').click(function(){
 })
 
 function alertMessage(mensagem, tipo){
-    $('body').before('<div class="box-alert '+tipo+'"><i class="fas fa-check-circle"></i> '+mensagem+'</div>');
+    $('body').before('<div class="box-alert '+tipo+'"><i class="fa-solid fa-triangle-exclamation"></i> '+mensagem+'</div>');
 
     setTimeout(function(){
         $('.box-alert').fadeOut();
