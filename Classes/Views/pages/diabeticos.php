@@ -76,9 +76,9 @@
                 $hipertenso = (in_array('2', $comorbidade)) ? true : false;
                 $legenda = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $value['id'])['legenda_id'];
                 $consultas = \Classes\Models\UtilsModel::selecionar('consulta', 'paciente_id', $value['id']);
-                if(!empty($consultas)){
-                    $ult_consulta = date('d/m/Y', strtotime($consultas['ult_consulta']));
-                    $prox_consulta = date('d/m/Y', strtotime($consultas['prox_consulta']));
+                if (!empty($consultas)) {
+                  $ult_consulta = ($consultas['ult_consulta'] != '0000-00-00') ? date('d/m/Y', strtotime($consultas['ult_consulta'])) : '';
+                  $prox_consulta = ($consultas['prox_consulta'] != '0000-00-00') ? date('d/m/Y', strtotime($consultas['prox_consulta'])) : '';
                 }else{
                     $ult_consulta = '';
                     $prox_consulta = '';
