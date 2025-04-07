@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/04/2025 às 02:15
+-- Tempo de geração: 07/04/2025 às 20:56
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -86,7 +86,9 @@ CREATE TABLE `consulta` (
 --
 
 INSERT INTO `consulta` (`id`, `paciente_id`, `ult_consulta`, `prox_consulta`, `ativo`) VALUES
-(1, 3, '2025-02-28', '2025-04-25', 1);
+(1, 3, '2025-02-28', '2025-04-25', 1),
+(2, 14, '2025-04-07', '2025-04-29', 1),
+(3, 17, '0000-00-00', '2025-06-21', 1);
 
 -- --------------------------------------------------------
 
@@ -125,7 +127,8 @@ INSERT INTO `legenda` (`id`, `descricao`, `ativo`) VALUES
 (1, 'Não passa na unidade', 1),
 (2, 'Visita domiciliar', 1),
 (3, 'Faz tempo que não passa ', 1),
-(4, 'Mudou / RECUSA', 1);
+(4, 'Mudou / RECUSA', 1),
+(5, 'Faltou na última consulta', 1);
 
 -- --------------------------------------------------------
 
@@ -161,16 +164,16 @@ CREATE TABLE `paciente` (
 
 INSERT INTO `paciente` (`id`, `agente_id`, `nome`, `prontuario`, `cpf`, `nascimento`, `telefone`, `sexo`, `comorbidade`, `legenda_id`, `vacina_dengue`, `vacina_febre_amarela`, `insulina`, `gestante`, `conduta`, `ppn`, `observacao`, `ativo`) VALUES
 (1, 1, 'Kevin', '', '132.456.465-78', '2001-10-23', NULL, '', NULL, NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
-(3, 1, 'puericultura 1', '101.01.000', '000.000.000-00', '2025-04-01', '(11) 95645-5656', 'masculino', '3', 1, 0, 0, 0, 0, NULL, NULL, 'Teste observação puericultura Teste observação puericulturas||||||||||||', 1),
-(4, 1, 'puericultura 2', '', '325.421.341-23', '2025-03-30', '', 'masculino', NULL, 0, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
+(3, 1, 'puericultura 1', '101.01.000', '000.000.000-00', '2025-04-01', '(11) 95645-5656', 'masculino', '3', 5, 0, 0, 0, 0, NULL, NULL, 'Teste observação puericultura Teste observação puericulturas||||||||||||', 1),
+(4, 1, 'puericultura 2', '', '325.421.341-23', '2025-03-30', '', 'masculino', NULL, 1, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
 (5, 1, 'puericultura 3', '', '345.342.234-32', '2025-01-05', NULL, '', NULL, NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
-(6, 1, 'Criança 1', '', '432.424.532-54', '2015-01-04', NULL, '', NULL, NULL, 1, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
+(6, 1, 'Criança 1', '', '432.424.532-54', '2015-01-04', '', 'masculino', NULL, 0, 1, 1, 0, 0, NULL, NULL, '||Observação da criança||||||||||', 1),
 (7, 1, 'Criança 2', '', '543.543.6', '2011-01-13', NULL, '', NULL, NULL, 0, 1, 0, 0, NULL, NULL, '||||||||||||', 1),
-(10, 1, 'idoso 1', '', '356.765.435', '1960-01-01', NULL, '', '1,2', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
-(14, 1, 'Idoso 2', '', '654.543.532-42', '1955-05-01', NULL, '', '2', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
+(10, 1, 'idoso 1', '656.54.523', '356.765.435', '1960-01-01', '(13) 21323-2316', 'masculino', '1,2', 4, 0, 0, 0, 0, NULL, NULL, '||||Obs do idoso 1||||||||', 1),
+(14, 1, 'Idoso 2', '', '654.543.532-42', '1955-05-01', '', 'feminino', '2', 5, 0, 0, 0, 0, NULL, NULL, '||||||Teste||||||', 1),
 (15, 1, 'idoso 3', '', '654.543.532-41', '1920-02-02', NULL, '', '1,2,3', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
 (16, 1, 'Kevin', '', '424.581.868-90', '2025-04-01', '', 'masculino', '1,2', 3, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
-(17, 1, 'hipertenso', '', '165.465.321-65', '2025-02-02', '', 'feminino', '1,3', 4, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
+(17, 1, 'Diabetes', '', '165.465.321-65', '2025-02-02', '', 'feminino', '1,3', 0, 0, 0, 0, 0, NULL, NULL, '||||||||Diabetico ||||', 1),
 (19, 1, 'Mulher 1', '', '424.581.868-00', '2000-01-05', '', 'feminino', '1', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
 (20, 1, 'mulher 2', '010.16.546', '454.864.644-54', '1995-01-05', '', 'feminino', '2', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
 (21, 1, 'GISLAINE FREIRE', '111.11.111', '456.465.465-45', '1980-11-15', '(11) 95968-6565', 'feminino', '1', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1);
@@ -241,7 +244,7 @@ ALTER TABLE `comorbidade`
 -- AUTO_INCREMENT de tabela `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `gestante`
@@ -253,7 +256,7 @@ ALTER TABLE `gestante`
 -- AUTO_INCREMENT de tabela `legenda`
 --
 ALTER TABLE `legenda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `paciente`
