@@ -3,8 +3,6 @@
   $css = ['painel'];
   $js = ['mask','painel','form'];
   include("header.php");
-  //   $agente = \Classes\Models\UtilsModel::selecionar('tb_admin.agente', 'id', $_SESSION['id']);
-  
   $menuSelected = 'pacientes';
   
 ?>

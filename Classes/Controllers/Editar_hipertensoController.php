@@ -1,29 +1,24 @@
 <?php
 	namespace Classes\Controllers;
-	class Editar_puericulturaController{
+	class Editar_hipertensoController{
 		function index(){
             $tabela = 'paciente';
             $id = @$_GET['id'];
             $consultas = \Classes\Models\UtilsModel::selecionar('consulta', 'paciente_id', $id);
 
             if(!empty($id)){
-			    // Verifica se paciente existe e faz parte da tabela puericultura
+			    // Verifica se paciente existe e faz parte da tabela Hipertenso
                 $paciente = \Classes\Models\UtilsModel::selecionar($tabela, 'id', $id);
-                if(!empty($paciente)){
-                    $dataNascimento = new \DateTime($paciente['nascimento']);
-                    $dataAtual = new \DateTime();
-                    $idade = $dataAtual->diff($dataNascimento)->y;
-
-                    if ($idade > 2)
-                        \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'puericultura');
-                    
-                }else
-                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'puericultura');
+                $comorbidade = explode(',', $paciente['comorbidade']);
+                $hipertenso = (in_array('2', $comorbidade)) ? true : false;
+                if(empty($hipertenso))
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'hipertensos');
+                
             }else
-                \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'puericultura');
+                \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'hipertensos');
 			
           
-            if(isset($_POST['editar-puericultura'])){
+            if(isset($_POST['editar-hipertenso'])){
                 //Editar paciente
                 $nome = $_POST['nome'];
                 $cpf = $_POST['cpf'];
@@ -54,7 +49,7 @@
 					//Atualizar
 
                     $obs = explode('||', $paciente['observacao']);
-                    $obs[0] = $observacao;
+                    $obs[3] = $observacao;
                     $obs = implode('||', $obs);
                     $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, cpf = ?, nascimento = ?, telefone = ?, sexo = ?, comorbidade = ?, legenda_id = ?, observacao = ? WHERE id = ?");
 					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$obs,$id]);
@@ -73,7 +68,7 @@
 				}
             }
 			
-			\Classes\Models\PainelModel::checkLogin('editar-puericultura');
+			\Classes\Models\PainelModel::checkLogin('editar-hipertenso');
 		}
 	}
 ?>

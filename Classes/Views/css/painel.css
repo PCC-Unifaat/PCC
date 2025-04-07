@@ -3,6 +3,7 @@
 	--visita-domiciliar: #5636e6;
 	--faz-tempo: #E06666;
 	--mudou-recusa: #FF0000;
+	--faltou-ultima: #00f5e9;
 }
 
 main{ padding: 0 2%;}
@@ -272,6 +273,7 @@ table tr:nth-of-type(odd){ background: #dfdfdf;}
 .linha-2{ background: var(--visita-domiciliar) !important; color: #fff;}
 .linha-3{ background: var(--faz-tempo) !important; color: #fff;}
 .linha-4{ background: var(--mudou-recusa) !important; color: #fff;}
+.linha-5{ background: var(--faltou-ultima) !important;}
 
 table td{  padding: 15px 10px;}
 

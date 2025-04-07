@@ -3,7 +3,7 @@
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
-//   $menuSelected = 'comorbidades';
+  $menuSelected = 'criancas';
   
 ?>
 <div id="painel">
@@ -91,8 +91,8 @@
                   </td>
                   <td><?php echo (!empty($value['vacina_dengue']) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
                   <td><?php echo (!empty($value['vacina_febre_amarela']) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
-                  <td></td>
-                <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                  <td><?php echo $obs;?></td>
+                <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar_crianca?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 </tr>
               <?php }?>
           </table>

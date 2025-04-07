@@ -1,29 +1,28 @@
 <?php
 	namespace Classes\Controllers;
-	class Editar_puericulturaController{
+	class Editar_idosoController{
 		function index(){
             $tabela = 'paciente';
             $id = @$_GET['id'];
-            $consultas = \Classes\Models\UtilsModel::selecionar('consulta', 'paciente_id', $id);
 
             if(!empty($id)){
-			    // Verifica se paciente existe e faz parte da tabela puericultura
+			    // Verifica se paciente existe e faz parte da tabela idoso
                 $paciente = \Classes\Models\UtilsModel::selecionar($tabela, 'id', $id);
                 if(!empty($paciente)){
                     $dataNascimento = new \DateTime($paciente['nascimento']);
                     $dataAtual = new \DateTime();
                     $idade = $dataAtual->diff($dataNascimento)->y;
 
-                    if ($idade > 2)
-                        \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'puericultura');
+                    if ($idade < 65) 
+                        \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'idosos');
                     
                 }else
-                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'puericultura');
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'idosos');
             }else
-                \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'puericultura');
+                \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'idosos');
 			
           
-            if(isset($_POST['editar-puericultura'])){
+            if(isset($_POST['editar-idoso'])){
                 //Editar paciente
                 $nome = $_POST['nome'];
                 $cpf = $_POST['cpf'];
@@ -32,8 +31,6 @@
                 $telefone = $_POST['telefone'];
                 $sexo = @$_POST['sexo'];
                 $comorbidade = @$_POST['comorbidade'];
-                $ult_consulta = $_POST['ult_consulta'];
-                $prox_consulta = $_POST['prox_consulta'];
                 $observacao = $_POST['observacao'];
                 $legenda = $_POST['status'];
 
@@ -54,26 +51,16 @@
 					//Atualizar
 
                     $obs = explode('||', $paciente['observacao']);
-                    $obs[0] = $observacao;
+                    $obs[2] = $observacao;
                     $obs = implode('||', $obs);
                     $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, cpf = ?, nascimento = ?, telefone = ?, sexo = ?, comorbidade = ?, legenda_id = ?, observacao = ? WHERE id = ?");
 					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$obs,$id]);
-
-                    if(!empty($ult_consulta) || !empty($prox_consulta)){
-                        // Verificar se já existe consulta cadastrada
-                        if(empty($consultas)){
-                            \Classes\Models\UtilsModel::inserir('consulta',[$id,$ult_consulta,$prox_consulta]);
-                        }else{
-                            $sql = \Classes\MySql::conectar()->prepare("UPDATE `consulta` SET ult_consulta = ?, prox_consulta = ? WHERE paciente_id = ?");
-                            $sql->execute([$ult_consulta,$prox_consulta,$id]);
-                        }
-                    }
 					
 					\Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
 				}
             }
 			
-			\Classes\Models\PainelModel::checkLogin('editar-puericultura');
+			\Classes\Models\PainelModel::checkLogin('editar-idoso');
 		}
 	}
 ?>

@@ -3,8 +3,7 @@
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
-//   $menuSelected = 'comorbidades';
-// $comorbidades = \Classes\Models\UtilsModel::selecionarTudo('comorbidade');
+  $menuSelected = 'ppn';
   
 ?>
 <div id="painel">

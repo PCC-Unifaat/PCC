@@ -3,7 +3,7 @@
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
-  // $menuSelected = 'comorbidades';
+  $menuSelected = 'puericultura';
   
 ?>
 <div id="painel">
@@ -88,9 +88,9 @@
                   <td><?php echo ucfirst($value['nome']);?></td>
                   <td><?php echo $value['prontuario'];?></td>
                   <td><?php echo date('d/m/Y', strtotime($value['nascimento']));?></td>
-                  <td><?php echo$ult_consulta;?></td>
-                  <td><?php echo$prox_consulta;?></td>
-                  <td><?php echo$obs;?></td>
+                  <td><?php echo $ult_consulta;?></td>
+                  <td><?php echo $prox_consulta;?></td>
+                  <td><?php echo $obs;?></td>
                 <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar_puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 </tr>
               <?php }?>

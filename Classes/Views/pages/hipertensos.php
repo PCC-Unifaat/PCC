@@ -3,7 +3,7 @@
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
-//   $menuSelected = 'comorbidades';
+  $menuSelected = 'hipertensoss';
   
 ?>
 <div id="painel">
@@ -75,6 +75,15 @@
                 $diabete = (in_array('1', $comorbidade)) ? true : false;
                 $legenda = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $value['id'])['legenda_id'];
 
+                $consultas = \Classes\Models\UtilsModel::selecionar('consulta', 'paciente_id', $value['id']);
+                  if(!empty($consultas)){
+                      $ult_consulta = date('d/m/Y', strtotime($consultas['ult_consulta']));
+                      $prox_consulta = date('d/m/Y', strtotime($consultas['prox_consulta']));
+                  }else{
+                      $ult_consulta = '';
+                      $prox_consulta = '';
+                  }
+
                 $obs = explode('||', $value['observacao'])[3];
             ?>
              <tr class="linha-<?php echo $legenda?>">
@@ -82,10 +91,10 @@
                   <td><?php echo $value['prontuario'];?></td>
                   <td><?php echo date('d/m/Y', strtotime($value['nascimento']));?></td>
                   <td><?php echo (!empty($diabete) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                  <td><?php echo $ult_consulta;?></td>
+                  <td><?php echo $prox_consulta;?></td>
+                  <td><?php echo $obs;?></td>
+                <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar_hipertenso?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 </tr>
               <?php }?>
           </table>

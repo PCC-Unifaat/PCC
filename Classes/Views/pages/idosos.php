@@ -3,8 +3,7 @@
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
-//   $menuSelected = 'comorbidades';
-// $comorbidades = \Classes\Models\UtilsModel::selecionarTudo('comorbidade');
+  $menuSelected = 'idosos';
   
 ?>
 <div id="painel">
@@ -106,8 +105,8 @@
                     }
                 ?>
               </td>
-              <td></td>
-            <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><?php echo $obs;?></td>
+            <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar_idoso?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php }?>
       </table>
