@@ -96,9 +96,23 @@
               <?php }?>
           </table>
 
-      </div><!--table-overflow-->
+        </div><!--table-overflow-->
       <?php }?>
+
+        <div class="legenda">
+          <h2>Legenda</h2>
+          <?php 
+            $legenda = \Classes\Models\UtilsModel::selecionarTudo('legenda');
+            foreach ($legenda as $key => $value) {
+          ?>
+            <div class="legenda-item linha-<?php echo $value['id']?>">
+              <span class="descricao"><?php echo $value['descricao'];?></span>
+            </div>
+          <?php }?>
+        
+        </div>
       </div>
+
     </div>
 
   </main>

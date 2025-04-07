@@ -73,9 +73,11 @@
               foreach ($hipertensos as $key => $value) {
                 $comorbidade = explode(',', $value['comorbidade']);
                 $diabete = (in_array('1', $comorbidade)) ? true : false;
-                
-          ?>
-                <tr>
+                $legenda = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $value['id'])['legenda_id'];
+
+                $obs = explode('||', $value['observacao'])[3];
+            ?>
+             <tr class="linha-<?php echo $legenda?>">
                   <td><?php echo ucfirst($value['nome']);?></td>
                   <td><?php echo $value['prontuario'];?></td>
                   <td><?php echo date('d/m/Y', strtotime($value['nascimento']));?></td>
@@ -90,6 +92,18 @@
 
       </div><!--table-overflow-->
       <?php }?>
+      <div class="legenda">
+          <h2>Legenda</h2>
+          <?php 
+            $legenda = \Classes\Models\UtilsModel::selecionarTudo('legenda');
+            foreach ($legenda as $key => $value) {
+          ?>
+            <div class="legenda-item linha-<?php echo $value['id']?>">
+              <span class="descricao"><?php echo $value['descricao'];?></span>
+            </div>
+          <?php }?>
+        
+        </div>
       </div>
     </div>
 

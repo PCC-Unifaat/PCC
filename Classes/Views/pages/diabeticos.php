@@ -74,9 +74,10 @@
               foreach ($diabeticos as $key => $value) {
                 $comorbidade = explode(',', $value['comorbidade']);
                 $hipertenso = (in_array('2', $comorbidade)) ? true : false;
-                
-          ?>
-                <tr>
+                $legenda = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $value['id'])['legenda_id'];
+                $obs = explode('||', $value['observacao'])[4];
+            ?>
+                <tr class="linha-<?php echo $legenda?>">
                   <td><?php echo ucfirst($value['nome']);?></td>
                   <td><?php echo $value['prontuario'];?></td>
                   <td><?php echo date('d/m/Y', strtotime($value['nascimento']));?></td>
@@ -85,13 +86,25 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                  <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 </tr>
               <?php }?>
           </table>
 
       </div><!--table-overflow-->
       <?php }?>
+      <div class="legenda">
+          <h2>Legenda</h2>
+          <?php 
+            $legenda = \Classes\Models\UtilsModel::selecionarTudo('legenda');
+            foreach ($legenda as $key => $value) {
+          ?>
+            <div class="legenda-item linha-<?php echo $value['id']?>">
+              <span class="descricao"><?php echo $value['descricao'];?></span>
+            </div>
+          <?php }?>
+        
+        </div>
       </div>
     </div>
 

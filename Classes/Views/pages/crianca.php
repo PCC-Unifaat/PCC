@@ -73,8 +73,11 @@
           <?php 
                 
               foreach ($crianca as $key => $value) {
+              $legenda = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $value['id'])['legenda_id'];
+
+              $obs = explode('||', $value['observacao'])[1];
           ?>
-                <tr>
+                <tr class="linha-<?php echo $legenda?>">
                   <td><?php echo ucfirst($value['nome']);?></td>
                   <td><?php echo $value['prontuario'];?></td>
                   <td><?php echo date('d/m/Y', strtotime($value['nascimento']));?></td>
@@ -87,7 +90,7 @@
                     ?>
                   </td>
                   <td><?php echo (!empty($value['vacina_dengue']) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
-                  <td><?php echo (!empty($value['vacina_febre_amarela']) ? '<span class="ativo"><i class="fa-solid fa-syringe"></i></span>' : '') ?></td>
+                  <td><?php echo (!empty($value['vacina_febre_amarela']) ? '<span class="ativo"><i class="fa-solid fa-square-check"></i></span>' : '') ?></td>
                   <td></td>
                 <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 </tr>
@@ -96,7 +99,21 @@
 
       </div><!--table-overflow-->
       <?php }?>
+        
+        <div class="legenda">
+          <h2>Legenda</h2>
+          <?php 
+            $legenda = \Classes\Models\UtilsModel::selecionarTudo('legenda');
+            foreach ($legenda as $key => $value) {
+          ?>
+            <div class="legenda-item linha-<?php echo $value['id']?>">
+              <span class="descricao"><?php echo $value['descricao'];?></span>
+            </div>
+          <?php }?>
+        
+        </div>
       </div>
+
     </div>
 
   </main>
