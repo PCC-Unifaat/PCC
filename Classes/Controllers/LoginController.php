@@ -4,7 +4,7 @@
 		function index(){
 			$tabela = 'agente';
            
-			if(isset($_POST['acao'])){
+			if(isset($_POST['login'])){
 				$email = $_POST['email'];
 				$senha = $_POST['senha'];
 

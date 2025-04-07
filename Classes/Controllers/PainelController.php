@@ -8,10 +8,7 @@
 
 			
 			
-			\Classes\Models\PainelModel::checkLogin('painel');
-			
-			
-			
+			\Classes\Models\PainelModel::checkLogin('painel');	
 		}
 	}
 ?>

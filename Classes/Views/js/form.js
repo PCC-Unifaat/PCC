@@ -65,9 +65,7 @@ function validarInput(){
             errorInput(el,"O limite de caracteres neste campo é "+max);
         else  if(el.attr('id') == 'email' && !re.test(value))
             errorInput(el,"Formato de E-mail inválido");
-        else if(el.attr('id') == 'familia' && value.length != 10)
-            errorInput(el,'Formato inválido no campo "Área/Micro/Família"!"');
-         if(el.attr('id') == 'senha' && value.length < 6)
+        else if(el.attr('id') == 'senha' && value.length < 6)
             errorInput(el,'A senha deve conter pelo menos 6 caracteres');
         else if(el.attr('id') == 'senha' && !/(?=.*[a-zA-Z])(?=.*[0-9])/.test(value))
             errorInput(el,'A senha deve conter letras e números');
@@ -124,4 +122,3 @@ function resetInput(el){
       el.parent().find('.file-btn').css("backgroundColor","");
     }
 }
-

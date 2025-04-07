@@ -1,3 +1,10 @@
+:root{
+	--nao-passa: #aef132;
+	--visita-domiciliar: #5636e6;
+	--faz-tempo: #E06666;
+	--mudou-recusa: #FF0000;
+}
+
 main{ padding: 0 2%;}
 
 main .container{
@@ -261,7 +268,19 @@ table tr{
 
 table tr:nth-of-type(odd){ background: #dfdfdf;}
 
+.linha-1{ background: var(--nao-passa) !important;}
+.linha-2{ background: var(--visita-domiciliar) !important; color: #fff;}
+.linha-3{ background: var(--faz-tempo) !important; color: #fff;}
+.linha-4{ background: var(--mudou-recusa) !important; color: #fff;}
+
 table td{  padding: 15px 10px;}
+
+table td span.ativo{ 
+	background: #20d45c;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 10px;
+}
 
 table img{ width: 70px;}
 
@@ -276,6 +295,8 @@ table .btn{
 	padding: 10px 20px;
 	transition: 0.3s;
 	display: inline-block;
+	border-radius: 30px;
+	border: 1px solid #e6e6e6;
 }
 
 table .editar{ background: var(--color-warning)}
@@ -289,6 +310,30 @@ table .editar:hover{ background: var(--color-warning-hover)}
 table .excluir:hover{ background: var(--color-error-hover)}
 
 table .perfil:hover{ background: var(--color-3-hover)}
+
+.legenda{
+	margin-top: 40px;
+	padding: 10px 15px;
+	max-width: 300px;
+	& h2{
+		text-align: center;
+		color: var(--color-2);
+		text-transform: uppercase;
+		width: 100%;
+		padding: 10px 0;
+	}
+
+	& > div{
+		display: flex;
+		align-items: center;
+		border-radius: 30px;
+		margin-top: 5px;
+		padding: 5px 10px;
+		border: 1px solid #ccc;
+	}
+}
+
+
 
 .dados-paciente p{
 	padding: 10px 0;

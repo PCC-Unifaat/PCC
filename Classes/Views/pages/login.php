@@ -26,8 +26,8 @@
               <input id="senha" name="senha" type="password" placeholder="Senha" content="required">  
             </div>
             <div class="btn-login w100">
-              <input type="submit" name="acao" value="Entrar!">
-              <a href="<?php echo INCLUDE_PATH?>cadastrar">Cadastrar</a>
+              <input type="submit" name="login" value="Entrar!">
+              <!-- <a href="<?php echo INCLUDE_PATH?>cadastrar">Cadastrar</a> -->
             </div>
             <a class="esqueceu-senha" href="<?php echo INCLUDE_PATH?>recuperar_senha">Esqueceu a senha?</a>
           </form>

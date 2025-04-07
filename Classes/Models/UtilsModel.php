@@ -24,7 +24,7 @@
 				}
 			}
 
-			$sql = \Classes\MySql::conectar()->prepare("INSERT INTO `$tabela` VALUES(null,".$campos.")");
+			$sql = \Classes\MySql::conectar()->prepare("INSERT INTO `$tabela` VALUES(null,".$campos.",ativo = '1')");
             $sql->execute($array);
 		}
 
@@ -42,7 +42,6 @@
 
 		public static function busca($tabela,$coluna = '1',$busca = '1',$ordem = 'id'){
 			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo`= '1' AND $coluna LIKE ? ORDER BY $ordem ");
-			echo $sql->queryString;
 			$sql->execute(array('%'.$busca.'%'));
 			return $sql->fetchAll();
 		}
@@ -51,6 +50,27 @@
 		public static function deletar($tabela,$id){
 			$sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET `ativo` = '0' WHERE id = ?");
 			$sql->execute(array($id));
+		}
+
+		public static function validarCPF($cpf){
+			$cpf = preg_replace('/[^0-9]/', '', $cpf);
+
+			if (strlen($cpf) != 11 || preg_match('/(\d)\1{10}/', $cpf)) {
+				return false;
+			}
+
+			for ($t = 9; $t < 11; $t++) {
+				$d = 0;
+				for ($c = 0; $c < $t; $c++) {
+					$d += $cpf[$c] * (($t + 1) - $c);
+				}
+				$d = ((10 * $d) % 11) % 10;
+				if ($cpf[$c] != $d) {
+					return false;
+				}
+			}
+
+			return true;
 		}
     }
 ?>

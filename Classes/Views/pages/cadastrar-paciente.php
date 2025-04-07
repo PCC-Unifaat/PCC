@@ -3,7 +3,7 @@
   $css = ['painel'];
   $js = ['mask','painel','form'];
   include("header.php");
-//   $agente = \Classes\Models\UtilsModel::selecionar('tb_admin.agente', 'id', $_SESSION['id']);
+  //   $agente = \Classes\Models\UtilsModel::selecionar('tb_admin.agente', 'id', $_SESSION['id']);
   
   $menuSelected = 'pacientes';
   
@@ -14,14 +14,9 @@
     <div class="container">
       <div class="content">
         <div class="mapa-site">
-          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <a href="<?php echo INCLUDE_PATH;?>pacientes">pacientes / </a> <span>Cadastrar paciente</span>
+          <a href="<?php echo INCLUDE_PATH;?>">Painel </a> / <span>Cadastrar paciente</span>
         </div>
         <h1>Cadastar paciente</h1>
-        <!-- <div id="loading">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: rgba(255, 255, 255, 0);" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path stroke="none" fill="#e15b64" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50">
-          <animateTransform values="0 50 51;360 50 51" keyTimes="0;1" repeatCount="indefinite" dur="1s" type="rotate" attributeName="transform"></animateTransform>
-        </path><g></g></g></svg>
-        </div> -->
         <form method="post" enctype="multipart/form-data">
             
             <div class="form-single w100">
@@ -35,8 +30,8 @@
             </div>
 
             <div class="form-single w30">
-                <label for="nascimetno">Data de nascimento: </label>
-                <input type="date" id="nascimetno" name="nascimetno" content="required">
+                <label for="nascimetno">Data de nascimento*: </label>
+                <input type="date" id="nascimetno" name="nascimetno" max="<?php echo date('Y-m-d'); ?>" content="required">
             </div>
 
             <div class="form-single w30">
@@ -47,6 +42,15 @@
             <div class="form-single w30">
                 <label for="telefone">Telefone: </label>
                 <input type="text" id="telefone" name="telefone">
+            </div>
+
+            <div class="form-single w70">
+              <label for="sexo">Sexo (biológico)*: </label>
+              <select id="sexo" name="sexo" content="required">
+                <option value="" disabled selected>Selecione</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+              </select>
             </div>
 
             <div class="form-single w100">
@@ -65,7 +69,7 @@
             </div>
             
             <div class="form-single w100">            
-              <input type="submit" class="btn-input" name="acao" value="Cadastrar!">
+              <input type="submit" class="btn-input" name="cadastrar-paciente" value="Cadastrar!">
             </div>
             
         </form>
