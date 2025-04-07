@@ -12,8 +12,8 @@
 					self::$pdo->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_EXCEPTION);
 					
 				}catch(\PDOException $e){
-					// die('<h2>Erro ao conectar</h2>');
-					echo 'Erro: '.$e->getMessage();
+					die('<h2>Erro ao conectar</h2><p>Tente novamente mais tarde.</p>');
+					// echo 'Erro: '.$e->getMessage();
 				}
 			}
 			return self::$pdo;
