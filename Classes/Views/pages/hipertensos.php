@@ -21,10 +21,11 @@
             $tabela = 'paciente';
             $ordem = 'nome';
             if (isset($_POST['acao'])) {
+              $ordem = $_POST['ordem'];
                 $busca = $_POST['busca'];
                 $paciente = Classes\Models\UtilsModel::busca($tabela, 'nome', $busca, $ordem);
             } else {
-                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela);
+                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, '1', '1', $ordem);
             }
 
             // Filter patients with comorbidade 1
@@ -36,11 +37,11 @@
           <form class="w100" method="post">
             <input class="w50" type="text" id="busca" name="busca" placeholder="Buscar paciente" value="<?php echo (isset($_POST['busca'])) ? $_POST['busca'] : ''; ?>">
             <select class="w50" name="ordem" placeholder="Ordenar">
-              <option <?php if($ordem == 'paciente') echo "selected";?> value="nome">Pacientes (A - Z)</option>
-              <option <?php if($ordem == 'paciente DESC') echo "selected";?> value="nome DESC">Pacientes (Z - A)</option>
+              <option <?php if($ordem == 'nome') echo "selected";?> value="nome">Pacientes (A - Z)</option>
+              <option <?php if($ordem == 'nome DESC') echo "selected";?> value="nome DESC">Pacientes (Z - A)</option>
             </select>
             <div class="btn-busca">
-              <a class="limpar-filtro" href="<?php echo INCLUDE_PATH;?>puericultura">Limpar filtro</a>
+              <a class="limpar-filtro" href="<?php echo INCLUDE_PATH;?>hipertensos">Limpar filtro</a>
               <button class="btn-input" name="acao"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             

@@ -6,7 +6,7 @@
   $menuSelected = 'hipertenso';
   $paciente = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $_GET['id']);
 
-  $observacao = explode('||', $paciente['observacao'])[3];
+  $observacao = explode('||', $paciente['observacao'])[3]; //Observação hipertenso
 
   $consultas = \Classes\Models\UtilsModel::selecionar('consulta', 'paciente_id', $_GET['id']);
   

@@ -6,7 +6,7 @@
   $menuSelected = 'puericultura';
   $paciente = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $_GET['id']);
 
-  $observacao = explode('||', $paciente['observacao'])[0];
+  $observacao = explode('||', $paciente['observacao'])[0]; //Observação puericultura
 
   $consultas = \Classes\Models\UtilsModel::selecionar('consulta', 'paciente_id', $_GET['id']);
   

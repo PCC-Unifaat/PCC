@@ -7,7 +7,7 @@
   
   $paciente = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $_GET['id']);
 
-  $observacao = explode('||', $paciente['observacao'])[1];
+  $observacao = explode('||', $paciente['observacao'])[1]; //Observação criança
 ?>
 <div id="painel">
   <?php include(BASE_DIR_PAINEL.'pages/sidebar.php');?>

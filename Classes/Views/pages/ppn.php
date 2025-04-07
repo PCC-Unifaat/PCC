@@ -21,10 +21,11 @@
             $tabela = 'paciente';
             $ordem = 'nome';
             if (isset($_POST['acao'])) {
+                $ordem = $_POST['ordem'];
                 $busca = $_POST['busca'];
-                $paciente = Classes\Models\UtilsModel::busca($tabela, 'nome', $busca, $ordem);
+                $paciente = Classes\Models\UtilsModel::busca($tabela, 'sexo = "feminino" AND nome', $busca, $ordem);
             } else {
-                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, 'sexo', 'feminino');
+                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, 'sexo', 'feminino', $ordem);
             }
 
             // Filter patients with less than 1 year of age
@@ -38,11 +39,11 @@
           <form class="w100" method="post">
             <input class="w50" type="text" id="busca" name="busca" placeholder="Buscar paciente" value="<?php echo (isset($_POST['busca'])) ? $_POST['busca'] : ''; ?>">
             <select class="w50" name="ordem" placeholder="Ordenar">
-              <option <?php if($ordem == 'paciente') echo "selected";?> value="nome">Pacientes (A - Z)</option>
-              <option <?php if($ordem == 'paciente DESC') echo "selected";?> value="nome DESC">Pacientes (Z - A)</option>
+              <option <?php if($ordem == 'nome') echo "selected";?> value="nome">Pacientes (A - Z)</option>
+              <option <?php if($ordem == 'nome DESC') echo "selected";?> value="nome DESC">Pacientes (Z - A)</option>
             </select>
             <div class="btn-busca">
-              <a class="limpar-filtro" href="<?php echo INCLUDE_PATH;?>puericultura">Limpar filtro</a>
+              <a class="limpar-filtro" href="<?php echo INCLUDE_PATH;?>ppn">Limpar filtro</a>
               <button class="btn-input" name="acao"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             
@@ -89,9 +90,9 @@
                 ?>
               </td>
               <td><?php echo $value['telefone'];?></td>
-              <td></td>
-              <td></td>
-            <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar-puericultura?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+              <td><?php echo $value['ppn'];?></td>
+              <td><?php echo $obs;?></td>
+            <td><a class="btn editar" href="<?php echo INCLUDE_PATH;?>editar_ppn?id=<?php echo $value['id'];?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
             </tr>
           <?php }?>
       </table>

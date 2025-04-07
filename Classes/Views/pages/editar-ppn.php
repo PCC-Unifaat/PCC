@@ -1,12 +1,13 @@
 <?php
-  $title = 'Editar idoso';
+  $title = 'Editar ppn';
   $css = ['painel'];
   $js = ['mask','painel','form'];
   include("header.php");
-  $menuSelected = 'idosos';
+  $menuSelected = 'criança';
+  
   $paciente = \Classes\Models\UtilsModel::selecionar('paciente', 'id', $_GET['id']);
 
-  $observacao = explode('||', $paciente['observacao'])[2]; //Observação idoso
+  $observacao = explode('||', $paciente['observacao'])[5]; //Observação PPN
 ?>
 <div id="painel">
   <?php include(BASE_DIR_PAINEL.'pages/sidebar.php');?>
@@ -14,7 +15,7 @@
     <div class="container">
       <div class="content">
         <div class="mapa-site">
-          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <a href="<?php echo INCLUDE_PATH;?>idosos">Idoso / </a> <span>Editar idoso</span>
+          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <a href="<?php echo INCLUDE_PATH;?>ppn">PPN / </a> <span>Editar PPN</span>
         </div>
         <h1>Editar paciente</h1>
         <form method="post" enctype="multipart/form-data">
@@ -68,11 +69,17 @@
                 <?php } ?>
             </div>
 
+            <div class="form-single w50">
+                <label for="ult_ppn">Último PPN: </label>
+                <input type="text" id="ult_ppn" value="<?php echo $paciente['ppn'];?>" name="ult_ppn">
+            </div>
 
             <div class="form-single w100">
-              <label for="observacao">Observação idoso: </label>
+              <label for="observacao">Observação ppn: </label>
               <input type="text" id="observacao" name="observacao" value="<?php echo $observacao;?>" maxCaracter="60">
             </div>
+
+            
 
             <div class="form-single w30">
               <label for="status">Status do paciente:</label>
@@ -88,7 +95,7 @@
             </div>
 
             <div class="form-single w100">            
-              <input type="submit" class="btn-input" name="editar-idoso" value="Atualizar!">
+              <input type="submit" class="btn-input" name="editar-ppn" value="Atualizar!">
             </div> 
         </form>
       
