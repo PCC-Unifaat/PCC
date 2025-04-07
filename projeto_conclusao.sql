@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/04/2025 às 20:56
+-- Tempo de geração: 07/04/2025 às 23:08
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -88,7 +88,8 @@ CREATE TABLE `consulta` (
 INSERT INTO `consulta` (`id`, `paciente_id`, `ult_consulta`, `prox_consulta`, `ativo`) VALUES
 (1, 3, '2025-02-28', '2025-04-25', 1),
 (2, 14, '2025-04-07', '2025-04-29', 1),
-(3, 17, '0000-00-00', '2025-06-21', 1);
+(3, 17, '0000-00-00', '2025-06-21', 1),
+(4, 16, '2024-11-11', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -153,7 +154,7 @@ CREATE TABLE `paciente` (
   `insulina` tinyint(1) DEFAULT 0,
   `gestante` tinyint(1) DEFAULT 0,
   `conduta` varchar(255) DEFAULT NULL,
-  `ppn` date DEFAULT NULL,
+  `ppn` varchar(255) DEFAULT NULL,
   `observacao` text DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -174,9 +175,10 @@ INSERT INTO `paciente` (`id`, `agente_id`, `nome`, `prontuario`, `cpf`, `nascime
 (15, 1, 'idoso 3', '', '654.543.532-41', '1920-02-02', NULL, '', '1,2,3', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
 (16, 1, 'Kevin', '', '424.581.868-90', '2025-04-01', '', 'masculino', '1,2', 3, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
 (17, 1, 'Diabetes', '', '165.465.321-65', '2025-02-02', '', 'feminino', '1,3', 0, 0, 0, 0, 0, NULL, NULL, '||||||||Diabetico ||||', 1),
-(19, 1, 'Mulher 1', '', '424.581.868-00', '2000-01-05', '', 'feminino', '1', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
+(19, 1, 'Mulher 1', '', '424.581.868-00', '2000-01-05', '(65) 46546-5456', 'feminino', '1', 1, 0, 0, 0, 0, NULL, '', '||||||||||teste||', 1),
 (20, 1, 'mulher 2', '010.16.546', '454.864.644-54', '1995-01-05', '', 'feminino', '2', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
-(21, 1, 'GISLAINE FREIRE', '111.11.111', '456.465.465-45', '1980-11-15', '(11) 95968-6565', 'feminino', '1', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1);
+(21, 1, 'GISLAINE FREIRE', '111.11.111', '456.465.465-45', '1980-11-15', '(11) 95968-6565', 'feminino', '1', NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1),
+(22, 1, 'Relampago marquinhos', '', '654.657.645-64', '1998-05-20', '', 'masculino', NULL, NULL, 0, 0, 0, 0, NULL, NULL, '||||||||||||', 1);
 
 --
 -- Índices para tabelas despejadas
@@ -244,7 +246,7 @@ ALTER TABLE `comorbidade`
 -- AUTO_INCREMENT de tabela `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `gestante`
@@ -262,7 +264,7 @@ ALTER TABLE `legenda`
 -- AUTO_INCREMENT de tabela `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restrições para tabelas despejadas
