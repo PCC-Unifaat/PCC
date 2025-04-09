@@ -73,11 +73,17 @@
 
             <div class="form-single w50">
                 <label for="ult_consulta">Última consulta: </label>
-                <input type="date" id="ult_consulta" name="ult_consulta" value="<?php echo @$consultas['ult_consulta'];?>">
+                <input type="date" id="ult_consulta" name="ult_consulta" max="<?php echo date('Y-m-d'); ?>"  value="<?php echo @$consultas['ult_consulta'];?>">
             </div>
             <div class="form-single w50">
                 <label for="prox_consulta">Próxima consulta: </label>
-                <input type="date" id="prox_consulta" name="prox_consulta" value="<?php echo @$consultas['prox_consulta'];?>">
+                <input type="date" id="prox_consulta" name="prox_consulta" min="<?php echo date('Y-m-d'); ?>" value="<?php echo isset($consultas['prox_consulta']) ? $consultas['prox_consulta'] : date('Y-m-d'); ?>">
+            </div>
+
+            <div class="form-single w50">
+                <label for="insulina">Paciente toma insulina: </label>
+                <input type="checkbox" id="insulina" name="insulina" value="1" <?php echo (!empty($paciente['insulina'])) ? 'checked' : ''; ?>>
+                <label for="insulina" class="checkbox-custom"><i class="fa-solid fa-check"></i></label>
             </div>
 
             <div class="form-single w100">

@@ -29,6 +29,7 @@
                 $comorbidade = @$_POST['comorbidade'];
                 $ult_consulta = $_POST['ult_consulta'];
                 $prox_consulta = $_POST['prox_consulta'];
+                $insulina = @$_POST['insulina'];
                 $observacao = $_POST['observacao'];
                 $legenda = $_POST['status'];
 
@@ -51,8 +52,8 @@
                     $obs = explode('||', $paciente['observacao']);
                     $obs[4] = $observacao;
                     $obs = implode('||', $obs);
-                    $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, cpf = ?, nascimento = ?, telefone = ?, sexo = ?, comorbidade = ?, legenda_id = ?, observacao = ? WHERE id = ?");
-					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$obs,$id]);
+                    $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, cpf = ?, nascimento = ?, telefone = ?, sexo = ?, comorbidade = ?, legenda_id = ?, insulina = ?, observacao = ? WHERE id = ?");
+					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$insulina,$obs,$id]);
 
                     if(!empty($ult_consulta) || !empty($prox_consulta)){
                         // Verificar se já existe consulta cadastrada
