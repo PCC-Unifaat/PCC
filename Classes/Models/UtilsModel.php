@@ -47,9 +47,9 @@
 		}
 
 		
-		public static function deletar($tabela,$id){
-			$sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET `ativo` = '0' WHERE id = ?");
-			$sql->execute(array($id));
+		public static function deletar($tabela,$campo,$valor){
+			$sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET `ativo` = '0' WHERE $campo = ?");
+			$sql->execute(array($valor));
 		}
 
 		public static function validarCPF($cpf){

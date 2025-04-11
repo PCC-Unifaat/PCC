@@ -45,11 +45,20 @@
 					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$gestante,$id]);
 					
                     $gest = \Classes\Models\UtilsModel::selecionar($tabela,'id',$id)['gestante'];
-                    if($gest == 0){ 
-                        \Classes\Models\UtilsModel::deletar('gestantes',$id);
-                    }else if($gest == 1){
-                        $sql = \Classes\MySql::conectar()->prepare("INSERT INTO `gestante` SET paciente_id");
-					    $sql->execute([$id]);
+                    if(empty($gest)){ 
+                        \Classes\Models\UtilsModel::deletar('gestante','paciente_id',$id);
+                    }else{
+                        $verifica = \Classes\MySql::conectar()->prepare("SELECT * FROM `gestante` WHERE paciente_id = ? ");
+			            $verifica->execute(array($id));
+                        $verifica = $verifica->fetchAll();
+                        if(empty($verifica)){
+                            // Verifica se já existe gestante cadastrada
+                            $sql = \Classes\MySql::conectar()->prepare("INSERT INTO `gestante` SET paciente_id = ?");
+					        $sql->execute([$id]);
+                        }else{
+                            $sql = \Classes\MySql::conectar()->prepare("UPDATE `gestante` SET `ativo`  = 1 WHERE paciente_id = ?");
+                            $sql->execute([$id]);
+                        }
                     }
 
                     if(!empty($ult_consulta) || !empty($prox_consulta)){
