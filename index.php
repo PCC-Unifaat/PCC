@@ -1,5 +1,6 @@
 <?php 
 	require_once('vendor/autoload.php');
+	require_once('vendor/tecnickcom/tcpdf/tcpdf.php');
 
 	include('config.php');
 	

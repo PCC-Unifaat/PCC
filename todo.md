@@ -11,3 +11,6 @@ Fazer prontuário familiar
 validar cadastro de data de nascimento válida {cm:2025-04-11}
 Editar usuário
 Cadastrar agente
+
+cadastrar comorbidade
+Excluir comorbidade

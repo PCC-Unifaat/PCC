@@ -114,17 +114,22 @@
 
       </div><!--table-overflow-->
       <?php }?>
-      <div class="legenda">
-          <h2>Legenda</h2>
-          <?php 
-            $legenda = \Classes\Models\UtilsModel::selecionarTudo('legenda');
-            foreach ($legenda as $key => $value) {
-          ?>
-            <div class="legenda-item linha-<?php echo $value['id']?>">
-              <span class="descricao"><?php echo $value['descricao'];?></span>
-            </div>
-          <?php }?>
-        
+      <div class="legenda-container">
+          <div class="legenda w50">
+            <h2>Legenda</h2>
+            <?php 
+              $legenda = \Classes\Models\UtilsModel::selecionarTudo('legenda');
+              foreach ($legenda as $key => $value) {
+            ?>
+              <div class="legenda-item linha-<?php echo $value['id']?>">
+                <span class="descricao"><?php echo $value['descricao'];?></span>
+              </div>
+            <?php }?>
+          
+          </div>
+          <div class="exportar w50">
+            <a href="<?php echo INCLUDE_PATH?>idosos?exportar" class="btn-input" target="_blank">Exportar tabela</a>
+          </div>
         </div>
       </div>
     </div>

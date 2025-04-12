@@ -313,9 +313,17 @@ table .excluir:hover{ background: var(--color-error-hover)}
 
 table .perfil:hover{ background: var(--color-3-hover)}
 
+.legenda-container{
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	margin-top: 20px;
+	padding: 10px 0;
+}
+
 .legenda{
 	margin-top: 40px;
-	padding: 10px 15px;
+	padding: 0 15px;
 	max-width: 300px;
 	& h2{
 		text-align: center;
@@ -333,6 +341,11 @@ table .perfil:hover{ background: var(--color-3-hover)}
 		padding: 5px 10px;
 		border: 1px solid #ccc;
 	}
+}
+
+.exportar{
+	text-align: right;
+	margin-top: 80px;
 }
 
 
