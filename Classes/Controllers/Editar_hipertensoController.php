@@ -64,7 +64,8 @@
                         }
                     }
 					
-					\Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+					// \Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'hipertensos');
 				}
             }
 			

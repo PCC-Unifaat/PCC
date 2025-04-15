@@ -22,13 +22,15 @@
         </div>
         <div class="busca w70">
           <?php
-          $tabela = 'comorbidade';
-            $ordem = 'comorbidade';
-              if(isset($_POST['acao'])){
-                $busca = $_POST['busca'];
-                $comorbidade = Classes\Models\UtilsModel::busca($tabela, 'comorbidade', $busca, $ordem);
-              }else
-                $comorbidade = Classes\Models\UtilsModel::selecionarTudo($tabela);
+              $tabela = 'comorbidade';
+              $ordem = 'comorbidade';
+              if (isset($_POST['acao'])) {
+                $ordem = $_POST['ordem'];
+                  $busca = $_POST['busca'];
+                  $comorbidade = Classes\Models\UtilsModel::busca($tabela, 'comorbidade', $busca, $ordem);
+              } else {
+                  $comorbidade = Classes\Models\UtilsModel::selecionarTudo($tabela, '1', '1', $ordem);
+              }
           ?>
           <form class="w100" method="post">
             <input class="w50" type="text" id="busca" name="busca" placeholder="Buscar comorbidade" value="<?php echo (isset($_POST['busca'])) ? $_POST['busca'] : ''; ?>">
@@ -55,17 +57,20 @@
           
               <tr> 
                   <th>Comorbidades</th>
-                  <th>#</th>
-                  <th>#</th>
+                  
+                  <th>Excluir</th>
               </tr>
           <?php 
               foreach ($comorbidade as $key => $value) {
           ?>
               <tr>
                   <td><?php echo ucfirst($value['comorbidade']);?></td>
-                  <td><a href="" class="btn editar">Editar</a></td>
-                  <td><span url="<?php echo INCLUDE_PATH;?>remedios?deletar=<?php echo $value['id'];?>" btn="Excluir" msg="Ao confirmar, essa ação não poderá ser desfeita!<br>*Ao excluir esse remédio, todos os horários de pacientes que contém esse remédio serão <b>DELETADOS!</b>*" class="btn excluir btn-deletar-item confirmar-acao">Excluir</span></td>
-              </tr>
+                  <?php if($value['id'] != 1 && $value['id'] != 2){?>
+                  <td><span url="<?php echo INCLUDE_PATH;?>comorbidades?deletar=<?php echo $value['id'];?>" btn="Excluir" msg="Ao confirmar, essa ação não poderá ser desfeita!" class="btn excluir btn-deletar-item confirmar-acao"><i class="fa-regular fa-trash-can"></i></span></td>
+                  <?php }else{?>
+                    <td></td>
+                    <?php }?>
+                </tr>
               <?php }?>
           </table>
 

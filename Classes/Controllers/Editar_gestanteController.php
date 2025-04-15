@@ -24,6 +24,8 @@
                 $telefone = $_POST['telefone'];
                 $dum = $_POST['dum'];
                 $dpp = $_POST['dpp'];
+                $inicio = $_POST['inicio'];
+                $proximo = $_POST['proximo'];
                 $altoRisco = @$_POST['alto_risco'];
                 $parto = $_POST['parto'];
                 $conduta = $_POST['conduta'];
@@ -42,10 +44,11 @@
                     $obs = implode('||', $obs);
                     $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, telefone = ?, legenda_id = ?, observacao = ? WHERE id = ?");
 					$sql->execute([$nome,$prontuario,$telefone,$legenda,$obs,$id]);
-                    $atualiza = \Classes\MySql::conectar()->prepare("UPDATE `gestante` SET dum = ?, dpp = ?, alto_risco = ?, conduta = ?, parto = ? WHERE paciente_id = ?");
-					$atualiza->execute([$dum,$dpp,$altoRisco,$conduta,$parto,$id]);
+                    $atualiza = \Classes\MySql::conectar()->prepare("UPDATE `gestante` SET dum = ?, dpp = ?, inicio = ?, proximo = ?, alto_risco = ?, conduta = ?, parto = ? WHERE paciente_id = ?");
+					$atualiza->execute([$dum,$dpp,$inicio,$proximo,$altoRisco,$conduta,$parto,$id]);
 					
-					\Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+					// \Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'gestantes');
 				}
             }
 			

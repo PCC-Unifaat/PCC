@@ -57,7 +57,8 @@
                     $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, cpf = ?, nascimento = ?, telefone = ?, sexo = ?, comorbidade = ?, legenda_id = ?, vacina_dengue = ?, vacina_febre_amarela = ?, observacao = ? WHERE id = ?");
 					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$vacinaDengue,$vacinaFebreAmarela,$obs,$id]);
 					
-					\Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+					// \Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'crianca');
 				}
             }
 			

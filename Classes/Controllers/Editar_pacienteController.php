@@ -13,6 +13,14 @@
             }else
                 \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'pacientes');
 			
+            if(isset($_GET['deletar'])){
+                //Deletar paciente
+                // \Classes\Models\UtilsModel::alerta('sucesso','Paciente deletado com sucesso!');
+                \Classes\Models\UtilsModel::deletar($tabela,'id',$id);
+                \Classes\Models\UtilsModel::deletar('consulta','paciente_id',$id);
+                \Classes\Models\UtilsModel::deletar('gestante','paciente_id',$id);
+                \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'pacientes');
+            }
           
             if(isset($_POST['editar-paciente'])){
                 //Editar paciente
@@ -71,7 +79,8 @@
                         }
                     }
 
-					\Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+					// \Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'pacientes');
 				}
             }
 			

@@ -56,7 +56,8 @@
                     $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, cpf = ?, nascimento = ?, telefone = ?, sexo = ?, comorbidade = ?, legenda_id = ?, observacao = ? WHERE id = ?");
 					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$obs,$id]);
 					
-					\Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+					// \Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'idosos');
 				}
             }
 			

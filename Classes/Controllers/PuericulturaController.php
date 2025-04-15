@@ -27,7 +27,6 @@
 				}, $puericultura);
 
 				\Classes\Models\TcpdfModels::exportarTabelaPDF($header, $dados, 'puericultura');
-				\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'puericultura');
 				exit;
 			}
 

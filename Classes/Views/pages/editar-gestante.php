@@ -35,17 +35,27 @@
                 <input type="text" id="telefone" value="<?php echo $paciente['telefone'];?>" name="telefone">
             </div>     
             
-            <div class="form-single w50">
+            <div class="form-single w30">
                 <label for="dum">DUM: </label>
                 <input type="date" id="dum" name="dum" value="<?php echo $gestante['dum'];?>">
             </div>
 
-            <div class="form-single w50">
+            <div class="form-single w30">
                 <label for="dpp">DPP: </label>
                 <input type="date" id="dpp" name="dpp" value="<?php echo $gestante['dpp'];?>">
             </div>
 
-            <div class="form-single w100">
+            <div class="form-single w30">
+                <label for="inicio">Inicio: </label>
+                <input type="date" id="inicio" value="<?php echo $gestante['inicio'];?>" name="inicio">
+            </div>
+
+            <div class="form-single w50">
+                <label for="proximo">Próximo: </label>
+                <input type="text" id="proximo" value="<?php echo $gestante['proximo'];?>" name="proximo">
+            </div>
+
+            <div class="form-single w50">
                 <label for="parto">Parto: </label>
                 <input type="text" id="parto" value="<?php echo $gestante['parto'];?>" name="parto">
             </div>

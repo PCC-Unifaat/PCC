@@ -97,7 +97,7 @@
                      
                       $comorbidade = explode(',', $value['comorbidade']);
                       foreach ($comorbidade as $key => $comorbidadeId) {
-                        $comorbidades = \Classes\Models\UtilsModel::selecionar('comorbidade', 'id', $comorbidadeId)['comorbidade'];
+                        $comorbidades = @\Classes\Models\UtilsModel::selecionar('comorbidade', 'id', $comorbidadeId)['comorbidade'];
                         echo ucfirst($comorbidades);
                         if ($key !== array_key_last($comorbidade)) {
                           echo ', ';

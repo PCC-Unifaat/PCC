@@ -30,7 +30,6 @@
 				}, $criancas);
 
 				\Classes\Models\TcpdfModels::exportarTabelaPDF($header, $dados, 'crianças');
-				\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'criancas');
 				exit;
 			}
 			

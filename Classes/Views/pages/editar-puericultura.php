@@ -56,21 +56,6 @@
               </select>
             </div>
 
-            <div class="form-single w100">
-                <p>Comorbidades: </p>
-                
-                <?php
-                    $comorbidades = \Classes\Models\UtilsModel::selecionarTudo('comorbidade');
-                    $comorbidadesPaciente = explode(',', $paciente['comorbidade']);
-                    foreach ($comorbidades as $key => $value) { ?>
-                    <div class="form-single">
-                        <label for="cat_<?php echo $value['id']?>"><?php echo ucfirst($value['comorbidade'])?> </label>
-                        <input type="checkbox" id="cat_<?php echo $value['id']?>" name="comorbidade[]" value="<?php echo $value['id']?>" <?php echo in_array($value['id'], $comorbidadesPaciente) ? 'checked' : ''; ?>>
-                        <label for="cat_<?php echo $value['id']?>" class="checkbox-custom"><i class="fa-solid fa-check"></i></label>
-                    </div>
-                <?php } ?>
-            </div>
-
             <div class="form-single w50">
                 <label for="ult_consulta">Última consulta: </label>
                 <input type="date" id="ult_consulta" name="ult_consulta" max="<?php echo date('Y-m-d'); ?>"  value="<?php echo @$consultas['ult_consulta'];?>">

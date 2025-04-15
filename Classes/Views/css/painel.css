@@ -292,7 +292,7 @@ table img{ width: 70px;}
 	height: 70px;
 }
 
-table .btn{
+.btn{
 	color: white;
 	padding: 10px 20px;
 	transition: 0.3s;
@@ -303,13 +303,13 @@ table .btn{
 
 table .editar{ background: var(--color-warning)}
 
-table .excluir{ background: var(--color-error)}
+.excluir{ background: var(--color-error)}
 
 table .perfil{ background: var(--color-3)}
 
 table .editar:hover{ background: var(--color-warning-hover)}
 
-table .excluir:hover{ background: var(--color-error-hover)}
+.excluir:hover{ background: var(--color-error-hover)}
 
 table .perfil:hover{ background: var(--color-3-hover)}
 

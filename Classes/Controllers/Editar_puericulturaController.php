@@ -31,16 +31,13 @@
                 $prontuario = $_POST['prontuario'];
                 $telefone = $_POST['telefone'];
                 $sexo = @$_POST['sexo'];
-                $comorbidade = @$_POST['comorbidade'];
                 $ult_consulta = $_POST['ult_consulta'];
                 $prox_consulta = $_POST['prox_consulta'];
                 $observacao = $_POST['observacao'];
                 $legenda = $_POST['status'];
 
                 $observacao = str_replace('|', '/', $observacao);
-
-                if (!empty($comorbidade))
-					$comorbidade = implode(',',$comorbidade);
+                
 
 				if(empty($nome) || empty($cpf) || empty($nascimento) || empty($sexo))
 					\Classes\Models\UtilsModel::alerta('erro','Preencha todos os campos obrigatórios!');
@@ -56,8 +53,8 @@
                     $obs = explode('||', $paciente['observacao']);
                     $obs[0] = $observacao;
                     $obs = implode('||', $obs);
-                    $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, cpf = ?, nascimento = ?, telefone = ?, sexo = ?, comorbidade = ?, legenda_id = ?, observacao = ? WHERE id = ?");
-					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$obs,$id]);
+                    $sql = \Classes\MySql::conectar()->prepare("UPDATE `$tabela` SET nome = ?, prontuario = ?, cpf = ?, nascimento = ?, telefone = ?, sexo = ?, legenda_id = ?, observacao = ? WHERE id = ?");
+					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$legenda,$obs,$id]);
 
                     if(!empty($ult_consulta) || !empty($prox_consulta)){
                         // Verificar se já existe consulta cadastrada
@@ -69,7 +66,8 @@
                         }
                     }
 					
-					\Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+					// \Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'puericultura');
 				}
             }
 			

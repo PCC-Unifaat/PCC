@@ -99,8 +99,14 @@
               </select>
             </div>
 
-            <div class="form-single w100">            
+            <div class="form-single w50"></div>
+
+            <div class="form-single w50">            
               <input type="submit" class="btn-input" name="editar-paciente" value="Atualizar!">
+            </div> 
+
+            <div class="form-single w50">            
+              <span url="<?php echo INCLUDE_PATH;?>editar_paciente?id=<?php echo $paciente['id'];?>&deletar" btn="Excluir" msg="Você está prestes a <b>DELETAR</b> o paciente<br>Ao confirmar, essa ação não poderá ser desfeita!" class="btn excluir btn-deletar-item confirmar-acao">Exluir paciente</span>
             </div> 
         </form>
       

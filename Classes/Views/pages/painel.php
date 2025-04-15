@@ -21,7 +21,8 @@
           <a href="<?php echo INCLUDE_PATH;?>hipertensos">Hipertensos</a> <br>
           <a href="<?php echo INCLUDE_PATH;?>diabeticos">Diabeticos</a> <br>
           <a href="<?php echo INCLUDE_PATH;?>ppn">Mulheres no período fértil</a> <br>
-          <a href="<?php echo INCLUDE_PATH;?>gestantes">Gestantes</a> <br>
+          <a href="<?php echo INCLUDE_PATH;?>gestantes">Gestantes</a> <br><br>
+          <a href="<?php echo INCLUDE_PATH;?>pacientes">Pacientes</a>
       </div>
     </div>
 

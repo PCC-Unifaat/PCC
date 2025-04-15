@@ -38,7 +38,6 @@
 				}, $idosos);
 
 				\Classes\Models\TcpdfModels::exportarTabelaPDF($header, $dados, 'idosos');
-				\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'idosos');
 				exit;
 			}
 			
