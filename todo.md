@@ -10,7 +10,7 @@ exportar tabela em pdf (instalar tcpdf) {cm:2025-04-12}
 Fazer prontuário familiar
 validar cadastro de data de nascimento válida {cm:2025-04-11}
 Editar usuário {cm:2025-04-16}
-Cadastrar agente
+Cadastrar agente {cm:2025-04-19}
 
 cadastrar comorbidade {cm:2025-04-16}
 Excluir comorbidade {cm:2025-04-12}
