@@ -30,10 +30,7 @@
 			
     
 
-			if(isset($_SESSION['login']))
-				\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH);
-			else
-                \Classes\Views\MainView::render('login');
+			\Classes\Models\PainelModel::checkLogin('login', false);
 		}
 	}
 ?>

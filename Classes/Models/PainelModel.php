@@ -22,19 +22,19 @@
 		// 	return $str;
 		// }
 
-		public static function checkLogin($page){
-			// if(isset($_SESSION['login'])){
-            //     if($_SESSION['email_verificado'] == 'verificado')
-			// 		\Classes\Views\MainView::render($page);
-            //     else
-            //         \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'autenticar');
-			// }else
-            //     \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'login');
-
-			if(isset($_SESSION['login']))
-				\Classes\Views\MainView::render($page);
-			else
-				\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'login');
+		public static function checkLogin($page, $painel = true){
+			if($painel){
+				if(isset($_SESSION['login']))
+					\Classes\Views\MainView::render($page);
+				else
+					\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'login');
+			}else{
+				if(isset($_SESSION['login']))
+					\Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH);
+				else
+					\Classes\Views\MainView::render($page);
+			}
+			
 		}
 
 		public static function arquivoValido($arquivo,$type){

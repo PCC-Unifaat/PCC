@@ -25,7 +25,7 @@
                 $busca = $_POST['busca'];
                 $paciente = Classes\Models\UtilsModel::busca($tabela, 'sexo = "feminino" AND nome', $busca, $ordem);
             } else {
-                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, 'sexo', 'feminino', $ordem);
+                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, 'agente_id', $_SESSION['id'], $ordem);
             }
 
             // Filter patients with less than 1 year of age
@@ -33,7 +33,7 @@
                 $dataNascimento = new DateTime($paciente['nascimento']);
                 $hoje = new DateTime();
                 $idade = $hoje->diff($dataNascimento)->y;
-                return $idade > 24 && $idade <= 64;
+                return $idade > 24 && $idade <= 64 && $paciente['sexo'] == 'feminino';
             });
           ?>
           <form class="w100" method="post">

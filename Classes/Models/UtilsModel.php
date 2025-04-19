@@ -41,8 +41,8 @@
 		}
 
 		public static function busca($tabela,$coluna = '1',$busca = '1',$ordem = 'id'){
-			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo`= '1' AND $coluna LIKE ? ORDER BY $ordem ");
-			$sql->execute(array('%'.$busca.'%'));
+			$sql = \Classes\MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE `ativo`= '1' AND 'agente_id' = ? AND $coluna LIKE ? ORDER BY $ordem ");
+			$sql->execute(array($_SESSION['id'],'%'.$busca.'%'));
 			return $sql->fetchAll();
 		}
 

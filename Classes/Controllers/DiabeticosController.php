@@ -6,7 +6,7 @@
 
 			if(isset($_GET['exportar'])){
 				$header = array('Nome', 'Prontuário', 'Nascimento', 'Insulina', 'Hipertenso', 'Observação');
-				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', '1', '1', 'nome');
+				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', 'agente_id', $_SESSION['id'], 'nome');
 				$diabetes = array_filter($pacientes, function($paciente) {
 					$comorbidade = explode(',', $paciente['comorbidade']);
 					return in_array('1', $comorbidade);

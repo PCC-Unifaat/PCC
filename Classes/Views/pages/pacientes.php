@@ -25,7 +25,7 @@
                 $busca = $_POST['busca'];
                 $paciente = Classes\Models\UtilsModel::busca($tabela, 'nome', $busca, $ordem);
             } else {
-                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, '1', '1', $ordem);
+                $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, 'agente_id', $_SESSION['id'], $ordem);
             }
 
           ?>

@@ -6,7 +6,7 @@
 			
 			if(isset($_GET['exportar'])){
 				$header = array('Nome', 'Prontuário', 'DUM', 'DPP', 'Observação');
-				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', 'sexo', 'feminino', 'nome');
+				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', 'agente_id', $_SESSION['id'], 'nome');
 				$gestantes = array_filter($pacientes, function($p) {
 					return $p['gestante'] != 0;
 				});

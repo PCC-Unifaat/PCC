@@ -7,9 +7,9 @@
 <div>
     <div class="box-side">
       <div class="icon"><span><i class="fa-solid fa-stethoscope"></i></span></div>
-      <div class="icon"><span><i class="fa-regular fa-hourglass-half"></i></span></div>
+      <div class="icon"><span><i class="fa-solid fa-hand-holding-medical"></i></span></div>
       <div class="icon"><span><i class="fa-solid fa-heart-pulse"></i></span></div>
-      <div class="icon"><span><i class="fa-regular fa-clock"></i></span></div>
+      <div class="icon"><span><i class="fa-solid fa-briefcase-medical"></i></span></div>
       <div class="icon"><span><i class="fa-solid fa-pills"></i></span></div>
     </div>
     <div class="box-login">
@@ -27,7 +27,7 @@
             </div>
             <div class="btn-login w100">
               <input type="submit" name="login" value="Entrar!">
-              <!-- <a href="<?php echo INCLUDE_PATH?>cadastrar">Cadastrar</a> -->
+              <a href="<?php echo INCLUDE_PATH?>cadastrar">Cadastrar</a>
             </div>
             <a class="esqueceu-senha" href="<?php echo INCLUDE_PATH?>recuperar_senha">Esqueceu a senha?</a>
           </form>

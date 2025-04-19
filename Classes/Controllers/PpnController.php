@@ -6,12 +6,12 @@
 
 			if(isset($_GET['exportar'])){
 				$header = array('Nome', 'Prontuário', 'Nascimento', 'Telefone', 'Ultimo PPN', 'Observação');
-				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', 'sexo', 'feminino', 'nome');
+				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', 'agente_id', $_SESSION['id'], 'nome');
 				$ppn = array_filter($pacientes, function($paciente) {
 					$dataNascimento = new DateTime($paciente['nascimento']);
 					$hoje = new DateTime();
 					$idade = $hoje->diff($dataNascimento)->y;
-					return $idade >= 25 && $idade < 65;
+					return $idade >= 25 && $idade < 65 && $paciente['sexo'] == 'feminino';
 				});
 				
 				$dados = array_map(function($paciente) {

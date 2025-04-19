@@ -6,7 +6,7 @@
 
 			if(isset($_GET['exportar'])){
 				$header = array('Nome', 'Prontuário', 'Nascimento', 'Comorbidades', 'Observação');
-				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', '1', '1', 'nome');
+				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', 'agente_id', $_SESSION['id'], 'nome');
 				$idosos = array_filter($pacientes, function($paciente) {
 					$dataNascimento = new DateTime($paciente['nascimento']);
 					$hoje = new DateTime();

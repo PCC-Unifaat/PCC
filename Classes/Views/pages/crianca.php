@@ -22,10 +22,10 @@
             $ordem = 'nome';
             if (isset($_POST['acao'])) {
               $ordem = $_POST['ordem'];
-                $busca = $_POST['busca'];
-                $paciente = Classes\Models\UtilsModel::busca($tabela, 'nome', $busca, $ordem);
+              $busca = $_POST['busca'];
+              $paciente = Classes\Models\UtilsModel::busca($tabela, 'nome', $busca, $ordem);
             } else {
-              $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, '1', '1', $ordem);
+              $paciente = Classes\Models\UtilsModel::selecionarTudo($tabela, 'agente_id', $_SESSION['id'], $ordem);
             }
 
             // Filter patients with less than 1 year of age

@@ -6,7 +6,7 @@
 			
 			if(isset($_GET['exportar'])){
 				$header = array('Nome', 'Prontuário', 'Nascimento', 'Vacina dengue', 'Vacina febre amarela', 'Observação');
-				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', '1', '1', 'nome');
+				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', 'agente_id', $_SESSION['id'], 'nome');
 				$criancas = array_filter($pacientes, function($paciente) {
 					$dataNascimento = new DateTime($paciente['nascimento']);
 					$hoje = new DateTime();
