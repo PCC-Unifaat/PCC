@@ -5,7 +5,7 @@
 		function index(){
 
 			if(isset($_GET['exportar'])){
-				$header = array('Nome', 'Prontuário', 'Nascimento', 'Insulina', 'Diabetes', 'Observação');
+				$header = array('Nome', 'Prontuário', 'Nascimento', 'Diabetes', 'Observação');
 				$pacientes = \Classes\Models\UtilsModel::selecionarTudo('paciente', 'agente_id', $_SESSION['id'], 'nome');
 				$hipertensos = array_filter($pacientes, function($paciente) {
 					$comorbidade = explode(',', $paciente['comorbidade']);
