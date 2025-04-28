@@ -3,7 +3,7 @@
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
-  $menuSelected = 'ppn';
+  $menuSelected = 'pacientes';
   
 ?>
 <div id="painel">
@@ -12,7 +12,7 @@
     <div class="container">
       <div class="content">
         <div class="mapa-site">
-          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <span>Mulheres no período fértil</span>
+          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <a href="<?php echo INCLUDE_PATH;?>pacientes">Pacientes /</a> <span>Mulheres no período fértil</span>
         </div>
       <h1>Lista de Mulheres no período fértil!</h1>
       <div class="head">
@@ -110,7 +110,6 @@
                 <span class="descricao"><?php echo $value['descricao'];?></span>
               </div>
             <?php }?>
-          
           </div>
           <div class="exportar w50">
             <a href="<?php echo INCLUDE_PATH?>ppn?exportar" class="btn-input" target="_blank">Exportar tabela</a>

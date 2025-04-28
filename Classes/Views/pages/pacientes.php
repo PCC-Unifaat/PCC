@@ -3,7 +3,7 @@
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
-  $menuSelected = 'idosos';
+  $menuSelected = 'pacientes';
   
 ?>
 <div id="painel">
