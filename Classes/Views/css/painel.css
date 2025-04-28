@@ -6,12 +6,36 @@
 	--faltou-ultima: #00f5e9;
 }
 
-main{ padding: 0 2%;}
+main{ padding: 20px 2%; min-height: 100%;}
 
 main .container{
-	margin-top: 20px;
+	/* margin-top: 20px; */
 	padding: 30px 2%;
 	min-width: 250px;
+	height: 100%;
+}
+
+.painel-container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: start;
+	align-items: center;
+	margin-top: 15px;
+	gap: 5px;
+}
+
+.btn-inicio{
+	background-color: var(--color-1);
+	display: block;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 30px;
+	text-align: center;
+	transition: 0.3s;
+}
+.btn-inicio:hover{
+	background-color: var(--color-1-hover);
+	color: white;
 }
 
 .sidebar{

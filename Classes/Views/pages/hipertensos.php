@@ -3,7 +3,7 @@
   $css = ['painel'];
   $js = ['painel'];
   include("header.php");
-  $menuSelected = 'hipertensoss';
+  $menuSelected = 'pacientes';
   
 ?>
 <div id="painel">
@@ -12,7 +12,7 @@
     <div class="container">
       <div class="content">
         <div class="mapa-site">
-          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <span>Hipertensos</span>
+          <a href="<?php echo INCLUDE_PATH;?>">Painel / </a> <a href="<?php echo INCLUDE_PATH;?>pacientes">Pacientes /</a> <span>Hipertensos</span>
         </div>
       <h1>Lista de pacientes hipertensos!</h1>
       <div class="head">

@@ -15,14 +15,20 @@
         </div>
           <h1>Bem vindo, <?php echo explode(' ',$_SESSION['nome'])[0]?>!</h1>
 
-          <a href="<?php echo INCLUDE_PATH;?>puericultura">Puericultura</a> <br>
-          <a href="<?php echo INCLUDE_PATH;?>criancas">Crianças</a> <br>
-          <a href="<?php echo INCLUDE_PATH;?>idosos">Idosos</a> <br>
-          <a href="<?php echo INCLUDE_PATH;?>hipertensos">Hipertensos</a> <br>
-          <a href="<?php echo INCLUDE_PATH;?>diabeticos">Diabeticos</a> <br>
-          <a href="<?php echo INCLUDE_PATH;?>ppn">Mulheres no período fértil</a> <br>
-          <a href="<?php echo INCLUDE_PATH;?>gestantes">Gestantes</a> <br><br>
-          <a href="<?php echo INCLUDE_PATH;?>pacientes">Pacientes</a>
+          <p>Esse é o painel de controle do sistema. Aqui você pode gerenciar os dados dos pacientes.</p>
+          <p>Para começar, escolha qual tabela você deseja gerenciar:</p>
+
+          <div class="painel-container">
+            <a class="btn-inicio" href="<?php echo INCLUDE_PATH;?>puericultura">Puericultura</a>
+            <a class="btn-inicio" href="<?php echo INCLUDE_PATH;?>criancas">Crianças</a>
+            <a class="btn-inicio" href="<?php echo INCLUDE_PATH;?>idosos">Idosos</a>
+            <a class="btn-inicio" href="<?php echo INCLUDE_PATH;?>hipertensos">Hipertensos</a>
+            <a class="btn-inicio" href="<?php echo INCLUDE_PATH;?>diabeticos">Diabeticos</a>
+            <a class="btn-inicio" href="<?php echo INCLUDE_PATH;?>ppn">Mulheres no período fértil</a>
+            <a class="btn-inicio" href="<?php echo INCLUDE_PATH;?>gestantes">Gestantes</a>
+            <a class="btn-inicio" href="<?php echo INCLUDE_PATH;?>pacientes">Pacientes</a>
+          </div>
+          
       </div>
     </div>
 
