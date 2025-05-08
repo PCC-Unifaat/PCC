@@ -1,0 +1,234 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: verdana;
+	text-decoration: none;
+}
+
+:root{
+	--color-1: #2aceec;
+	--color-1-hover: #12AFCB;
+	--color-2: #6F2BED;
+	--color-2-hover: #5212CB;
+	--color-3: #2B7DED;
+	--color-3-hover: #125FCB;
+	--color-white: #F0FCFE;
+	--color-black: #032025;
+	--color-error: #ED2B2B;
+	--color-error-hover: #B81111;
+	--color-sucesso: #2BED64;
+	--color-sucesso-hover: #10B843;
+	--color-warning: #EDC62C;
+	--color-warning-hover: #CBA612;
+}
+
+html,body{
+	height: 100%;
+	background-color: #EDF8FF;
+}
+
+.container{
+	margin: 0 auto;
+	padding: 0 2%;
+	width: 100%;
+	max-width: 1500px;
+	background: white;
+}
+
+.content{
+	margin: 0 auto;
+	padding: 0 2%;
+	width: 100%;
+	max-width: 1024px;
+}
+
+.w20{ width: 19% !important;}
+
+.w30{ width: 29% !important;}
+
+.w50{ width: 49% !important;}
+
+.w70{ width: 70% !important;}
+
+.w80{ width: 80% !important;}
+
+.w100{ width: 100% !important;}
+
+.box-alert{
+	padding: 8px 10px;
+	text-align: center;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	z-index: 999;
+	border-radius: 10px;
+	color: var(--color-white);
+	border: 1px solid;
+	display: block;
+}
+
+.sucesso{ background-color: var(--color-sucesso-hover);}
+
+.erro{ background-color: var(--color-error-hover);}
+
+.box-side{
+    height: 100vh;
+    width: 350px;
+    background: var(--color-1);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 10px
+}
+
+.icon{
+	font-size: 130px;
+	bottom: 0;
+	left: 5px;
+	color: var(--color-1-hover);
+}
+
+.icon:nth-of-type(even){ text-align: right;}
+
+.icon:nth-of-type(1){ transform: rotate(-20deg);}
+
+.icon:nth-of-type(2){ transform: rotate(10deg);}
+
+.icon:nth-of-type(3){ transform: rotate(-30deg);}
+
+.icon:nth-of-type(5){ transform: rotate(45deg);}
+
+#loading{
+	position: fixed;
+	z-index: 1;
+	background-color: #000000ac;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(3px);
+	display: none;
+}
+
+#loading svg{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.btn-input{
+	margin-top: 15px;
+	font-size: 18px;
+	color: var(--color-white);
+	background-color: var(--color-2);
+	padding: 10px 30px;
+	cursor: pointer;
+	transition: 0.3s;
+	border: 2px solid var(--color-2-hover);
+	display: inline-block;
+}
+
+.btn-input:hover{
+	background-color: var(--color-2-hover);
+	border-color: var(--color-2);
+}
+
+.btn-2{
+	padding: 10px 20px;
+	color: var(--color-white);
+	background-color: var(--color-1);
+	transition: 0.3s;
+	display: flex;
+	justify-content: space-between;
+	max-width: 210px;
+	border: 2px solid var(--color-1-hover);
+	cursor: pointer;
+}
+
+.btn-2:hover{
+	background-color: var(--color-1-hover);
+	border-color: var(--color-1)
+}
+
+.btn-deletar-item{ cursor: pointer;}
+
+.confirma-acao{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #00000050;
+	backdrop-filter: blur(2px);
+	width: 100vw;
+	height: 100vh;
+	z-index: 999;
+}
+
+.confirma-acao-container{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border: 3px solid #ccc;
+	padding: 15px 30px;
+	font-size: 20px;
+}
+
+.confirma-acao-container h4{
+	color: #EDC62C;
+	font-size: 50px;
+	text-align: center;
+}
+
+.confirma-acao-container h2{
+	color: var(--color-2);
+	margin-bottom: 30px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.confirma-acao-container p{
+	color: #545454;
+	margin-bottom: 20px;
+}
+
+.confirma-acao-container .btn-confirma{
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+	align-items: center;
+}
+
+.confirma-acao-container span{
+	cursor: pointer;
+	background-color: var(--color-warning);
+	color: var(--color-white);
+	padding: 10px 30px;
+	transition: 0.3s;
+}
+
+.confirma-acao-container span:hover{ background-color: var(--color-warning-hover);}
+
+.confirma-acao-container a{
+	background-color: var(--color-error);
+	color: var(--color-white);
+	padding: 10px 30px;
+	transition: 0.3s;
+}
+
+.confirma-acao-container a:hover{ background-color: var(--color-error-hover);}
+
+@media screen and (max-width: 800px){
+	.box-side{  width: 25px;}
+}
+
+@media screen and (max-width: 512px) {
+	.w50{width: 100% !important}
+
+	.w30{width: 100% !important}
+
+	.w70{width: 100% !important}
+}
