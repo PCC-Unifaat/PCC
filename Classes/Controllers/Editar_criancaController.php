@@ -58,7 +58,7 @@
 					$sql->execute([$nome,$prontuario,$cpf,$nascimento,$telefone,$sexo,$comorbidade,$legenda,$vacinaDengue,$vacinaFebreAmarela,$obs,$id]);
 					
 					// \Classes\Models\UtilsModel::alerta('sucesso','Paciente atualizado com sucesso!');
-                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'crianca');
+                    \Classes\Models\UtilsModel::redirecionar(INCLUDE_PATH.'criancas');
 				}
             }
 			
