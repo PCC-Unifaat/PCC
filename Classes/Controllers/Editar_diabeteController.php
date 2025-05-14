@@ -42,8 +42,8 @@
 					\Classes\Models\UtilsModel::alerta('erro','Preencha todos os campos obrigatórios!');
 				else if(strtotime($nascimento) > strtotime(date('Y-m-d')))
 					\Classes\Models\UtilsModel::alerta('erro','Data de nascimento inválida!');
-				// else if(!\Classes\Models\UtilsModel::validarCPF($cpf))
-				// 	\Classes\Models\UtilsModel::alerta('erro','CPF inválido!');
+				else if(!\Classes\Models\UtilsModel::validarCPF($cpf))
+					\Classes\Models\UtilsModel::alerta('erro','CPF inválido!');
 				else if(!empty(\Classes\Models\UtilsModel::selecionar($tabela,'cpf',$cpf)) && $cpf != $paciente['cpf'])
 					\Classes\Models\UtilsModel::alerta('erro','Esse CPF já está cadastrado!');
 				else{

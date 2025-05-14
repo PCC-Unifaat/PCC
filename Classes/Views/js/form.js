@@ -3,51 +3,9 @@ $(document).ready(function(){
     $('#cpf').mask('999.999.999-99');
     $('#prontuario').mask('999.99.999');
     $('#telefone').mask('(99) 99999-9999');
-
-    // $('#buscar-cep').click(function(){
-    //     var cep = $(this).parent().parent().find('#cep').val();
-    //     cep = cep.replace(/-/,'')
-        
-    //     buscarCep(cep);
-
-    // })
-
-    // $('form input[type="file"]').change(function(){
-    //     var el = $(this);
-    //     var fileName = el[0].files[0]['name'];
-    //     var span = el.parent().find('span');
-    
-    //     console.log(el[0].files[0])
-    //     if(fileName)
-    //       span.html(fileName);
-    // })
 })
 
-// function buscarCep(cep){
-//     var loading = $("#loading");
 
-//     loading.show();
-//     $.ajax({
-//         url: `https://viacep.com.br/ws/${cep}/json/`,
-//         type: "GET",
-//         dataType: "json",
-//         success: function (data) {
-
-//             if(data.erro !== undefined){
-//                 alertMessage("CEP inválido ou não encontrado",'erro');
-//             }else{
-//                $('#rua').val(data['logradouro'])
-//                $('#bairro').val(data['bairro'])
-//             }
-//         },
-//         error: function(data){
-//             alertMessage("Não foi possível buscar este CEP.",'erro');
-//         },
-//         complete: function(){
-//             loading.hide();
-//         }
-//     });
-// }
 
 
 function validarInput(){  
@@ -65,6 +23,8 @@ function validarInput(){
             errorInput(el,"O limite de caracteres neste campo é "+max);
         else  if(el.attr('id') == 'email' && !re.test(value))
             errorInput(el,"Formato de E-mail inválido");
+        else  if(el.attr('id') == 'cpf' && !validarCPF(value))
+            errorInput(el,"Formato de CPF inválido");
         else if(el.attr('id') == 'senha' && value.length < 6)
             errorInput(el,'A senha deve conter pelo menos 6 caracteres');
         else if(el.attr('id') == 'senha' && !/(?=.*[a-zA-Z])(?=.*[0-9])/.test(value))
@@ -121,4 +81,47 @@ function resetInput(el){
       el.parent().find('.file-btn').css("borderColor","");
       el.parent().find('.file-btn').css("backgroundColor","");
     }
+}
+
+function validarCPF(cpf) {
+    // Remove caracteres não numéricos
+    cpf = cpf.replace(/\D/g, '');
+
+    // Verifica se o CPF tem 11 dígitos
+    if (cpf.length !== 11) {
+        return false;
+    }
+
+    // Verifica se todos os dígitos são iguais
+    if (/^(\d)\1+$/.test(cpf)) {
+        return false;
+    }
+
+    // Valida o primeiro dígito verificador
+    let soma = 0;
+    for (let i = 0; i < 9; i++) {
+        soma += parseInt(cpf[i]) * (10 - i);
+    }
+    let resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) {
+        resto = 0;
+    }
+    if (resto !== parseInt(cpf[9])) {
+        return false;
+    }
+
+    // Valida o segundo dígito verificador
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+        soma += parseInt(cpf[i]) * (11 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) {
+        resto = 0;
+    }
+    if (resto !== parseInt(cpf[10])) {
+        return false;
+    }
+    console.log("CPF válido");
+    return true;
 }

@@ -8,14 +8,13 @@
 	// define('INCLUDE_PATH', 'http://192.168.214.42/ProjetoFinal/');
 	/****/
 	# Servidor
-	// define('INCLUDE_PATH', 'http://healthhubatibaia.online/');
+	// define('INCLUDE_PATH', 'https://healthhubatibaia.online/');
 	# Local
 	define('INCLUDE_PATH', 'http://localhost/PCC/');
 	define('INCLUDE_PATH_STATIC', INCLUDE_PATH.'Classes/Views/');
 	define('INCLUDE_PATH_PAINEL', INCLUDE_PATH.'painel/');
 
 	# BD Local
-	define('EMAIL_VERIFICACAO', 'recuperacao@paginasdotempo.com.br');
 	define('HOST', 'localhost');
 	define('DATABASE', 'projeto_conclusao');
 	define('USUARIO', 'root');
