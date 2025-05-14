@@ -7,16 +7,25 @@
 	/*** Testar mobile ***/
 	// define('INCLUDE_PATH', 'http://192.168.214.42/ProjetoFinal/');
 	/****/
+	# Servidor
+	// define('INCLUDE_PATH', 'http://healthhubatibaia.online/');
+	# Local
 	define('INCLUDE_PATH', 'http://localhost/PCC/');
 	define('INCLUDE_PATH_STATIC', INCLUDE_PATH.'Classes/Views/');
 	define('INCLUDE_PATH_PAINEL', INCLUDE_PATH.'painel/');
 
-	// define('EMAIL_VERIFICACAO', 'recuperacao@paginasdotempo.com.br');
-
+	# BD Local
+	define('EMAIL_VERIFICACAO', 'recuperacao@paginasdotempo.com.br');
 	define('HOST', 'localhost');
 	define('DATABASE', 'projeto_conclusao');
 	define('USUARIO', 'root');
 	define('SENHA', '');
+
+	# BD Servidor
+	// define('HOST', 'localhost');
+	// define('DATABASE', 'keving22_projeto_conclusao');
+	// define('USUARIO', 'keving22');
+	// define('SENHA', 'yU^zT42NqzP!V!');
 
 	define('BASE_DIR',__DIR__.'/');
 
