@@ -6,13 +6,17 @@
 	--faltou-ultima: #00f5e9;
 }
 
+
 main{ padding: 20px 2%; min-height: 100%;}
+
+
 
 main .container{
 	/* margin-top: 20px; */
 	padding: 30px 2%;
 	min-width: 250px;
 	height: 100%;
+	min-height: 100%;
 }
 
 .painel-container{
