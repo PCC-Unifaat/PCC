@@ -136,6 +136,18 @@ html,body{
 	border-color: var(--color-2);
 }
 
+/* Botões */
+.btn-input, .btn-2, .btn-deletar-item {
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+.btn-input:hover, .btn-2:hover, .btn-deletar-item:hover {
+    transform: translateY(-2px); /* Efeito de elevação */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
+}
+
 .btn-2{
 	padding: 10px 20px;
 	color: var(--color-white);
@@ -175,11 +187,15 @@ html,body{
 	border: 3px solid #ccc;
 	padding: 15px 30px;
 	font-size: 20px;
+	border-radius: 10px; /* Bordas arredondadas */
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+	animation: fadeIn 0.3s ease; /* Animação de entrada */
 }
 
 .confirma-acao-container h4{
 	color: #EDC62C;
-	font-size: 50px;
+	font-size: 40px; /* Reduzir tamanho para telas menores */
+	font-weight: bold;
 	text-align: center;
 }
 
@@ -208,18 +224,28 @@ html,body{
 	color: var(--color-white);
 	padding: 10px 30px;
 	transition: 0.3s;
+	border-radius: 5px; /* Bordas arredondadas */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-.confirma-acao-container span:hover{ background-color: var(--color-warning-hover);}
+.confirma-acao-container span:hover{ 
+	background-color: var(--color-warning-hover);
+	transform: scale(1.05); /* Efeito de zoom */
+}
 
 .confirma-acao-container a{
 	background-color: var(--color-error);
 	color: var(--color-white);
 	padding: 10px 30px;
 	transition: 0.3s;
+	border-radius: 5px; /* Bordas arredondadas */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-.confirma-acao-container a:hover{ background-color: var(--color-error-hover);}
+.confirma-acao-container a:hover{ 
+	background-color: var(--color-error-hover);
+	transform: scale(1.05); /* Efeito de zoom */
+}
 
 @media screen and (max-width: 800px){
 	.box-side{  width: 25px;}

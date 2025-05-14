@@ -3,7 +3,7 @@
 	--visita-domiciliar: #5636e6;
 	--faz-tempo: #E06666;
 	--mudou-recusa: #FF0000;
-	--faltou-ultima: #00f5e9;
+	--faltou-ultima: #3B86EE;
 }
 
 html, body{height: 100%;}
@@ -68,9 +68,9 @@ main .container{
 	left: -250px;
 	width: 300px;
 	min-height: 100vh;
-	background-image: linear-gradient(150deg,#2B6CED,#2B4BED);
+	background-image: linear-gradient(150deg,#3BD3EE,#19CCEB);
 	padding: 20px 0px;
-	border-right: 3px solid #2C2BED;
+	border-right: 3px solid #13BFDD;
 	z-index: 999;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -115,10 +115,10 @@ main .container{
    	padding-left: 20px;
 }
 
-.side-content a.selected{ background-color: #2C2BED;}
+.side-content a.selected{ background-color: #13BFDD;}
 
 .side-content a:hover:not(.selected),
-.side-content p:hover{ background-color: #2B8DED;}
+.side-content p:hover{ background-color: #59DAF1;}
 
 #painel-content{
     position:absolute;
@@ -308,7 +308,7 @@ table {
 }
 
 table th {
-    background-color: var(--color-3);
+    background-color: var(--color-1);
     color: #ffffff;
     padding: 15px;
     text-align: left;
@@ -332,10 +332,10 @@ table td {
 }
 
 .linha-1{ background: var(--nao-passa) !important;}
-.linha-2{ background: var(--visita-domiciliar) !important; color: #ffffff !important}
-.linha-3{ background: var(--faz-tempo) !important; color: #ffffff !important}
-.linha-4{ background: var(--mudou-recusa) !important; color: #ffffff !important}
-.linha-5{ background: var(--faltou-ultima) !important;}
+.linha-2{ background: var(--visita-domiciliar) !important; color: #fff !important;}
+.linha-3{ background: var(--faz-tempo) !important; color: #fff !important;}
+.linha-4{ background: var(--mudou-recusa) !important; color: #fff !important;}
+.linha-5{ background: var(--faltou-ultima) !important; color: #fff !important;}
 
 table td span.ativo{ 
 	background: #20d45c;
